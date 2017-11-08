@@ -9,46 +9,48 @@ function populateDB(tx) {
 	//alert("going populateDB");
 	tx.executeSql('DROP TABLE IF EXISTS PICTOS');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS PICTOS (nom TEXT NOT NULL, picto TEXT NOT NULL)');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("1erpicto", "img/1.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("2emepicto", "img/2.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("3emepicto", "img/3.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/4.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/0.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/1_1.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/1-2-3.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/1-4.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/2 centimes.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/2 dé.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/2 euros.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/2_1.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/3 dé.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/3_1.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/3-4.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/4 dé.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/4_1.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/5 dé.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/5 euros.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/5.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/6.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/7.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/8.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/9.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/2_1.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/3 dé.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/3_1.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/3-4.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/4 dé.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/4_1.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/5 centimes.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/5 dé.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/5 euros.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/5.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/6.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/7.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/8.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/9.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/5 centimes.png")');
-	tx.executeSql('INSERT INTO PICTOS(nom,picto) VALUES ("4emepicto", "img/6.png")');
+	var q = 'INSERT INTO PICTOS(nom,picto) VALUES (?, ?)';
+	var dataArray = [{id: "1", picto: "img/1.png"}, 
+					{id: "2", picto: "img/2.png"},
+					{id: "3", picto: "img/3.png"},
+					{id: "4", picto: "img/4.png"},
+					{id: "5", picto: "img/0.png"},
+					{id: "6", picto: "img/1_1.png"},
+					{id: "7", picto: "img/1-2-3.png"},
+					{id: "8", picto: "img/1-4.png"},
+					{id: "9", picto: "img/2 centimes.png"},
+					{id: "10", picto: "img/2 dé.png"},
+					{id: "11", picto: "img/2 euros.png"},
+					{id: "12", picto: "img/2_1.png"},
+					{id: "13", picto: "img/3 dé.png"},
+					{id: "14", picto: "img/3_1.png"},
+					{id: "15", picto: "img/3-4.png"},
+					{id: "16", picto: "img/4 dé.png"},
+					{id: "17", picto: "img/4_1.png"},
+					{id: "18", picto: "img/5 dé.png"},
+					{id: "19", picto: "img/5 euros.png"},
+					{id: "20", picto: "img/5.png"},
+					{id: "21", picto: "img/6.png"},
+					{id: "22", picto: "img/7.png"},
+					{id: "23", picto: "img/8.png"},
+					{id: "24", picto: "img/9.png"},
+					{id: "25", picto: "img/2_1.png"},
+					{id: "26", picto: "img/3 dé.png"},
+					{id: "27", picto: "img/3_1.png"},
+					{id: "28", picto: "img/3-4.png"},
+					{id: "29", picto: "img/4 dé.png"},
+					{id: "30", picto: "img/4_1.png"},
+					{id: "31", picto: "img/5 dé.png"},
+					{id: "32", picto: "img/5 euros.png"},
+					{id: "33", picto: "img/5.png"},
+					{id: "34", picto: "img/6.png"},
+					{id: "35", picto: "img/7.png"},
+					{id: "36", picto: "img/8.png"},
+					{id: "37", picto: "img/9.png"},
+					];
+	for (var i=0; i<dataArray.length; i++){
+		tx.executeSql(q, [dataArray[i].id, dataArray[i].picto])
+	}											
 }
 
 // Query the database
