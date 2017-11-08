@@ -45,8 +45,6 @@ function populateDB(tx) {
 					{id: "33", picto: "img/5.png"},
 					{id: "34", picto: "img/6.png"},
 					{id: "35", picto: "img/7.png"},
-					{id: "36", picto: "img/8.png"},
-					{id: "37", picto: "img/9.png"},
 					];
 	for (var i=0; i<dataArray.length; i++){
 		tx.executeSql(q, [dataArray[i].id, dataArray[i].picto])
