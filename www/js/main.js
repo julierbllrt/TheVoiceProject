@@ -34,17 +34,6 @@ function populateDB(tx) {
 					{id: "22", picto: "img/7.png"},
 					{id: "23", picto: "img/8.png"},
 					{id: "24", picto: "img/9.png"},
-					{id: "25", picto: "img/2_1.png"},
-					{id: "26", picto: "img/3 dé.png"},
-					{id: "27", picto: "img/3_1.png"},
-					{id: "28", picto: "img/3-4.png"},
-					{id: "29", picto: "img/4 dé.png"},
-					{id: "30", picto: "img/4_1.png"},
-					{id: "31", picto: "img/5 dé.png"},
-					{id: "32", picto: "img/5 euros.png"},
-					{id: "33", picto: "img/5.png"},
-					{id: "34", picto: "img/6.png"},
-					{id: "35", picto: "img/7.png"},
 					];
 	for (var i=0; i<dataArray.length; i++){
 		tx.executeSql(q, [dataArray[i].id, dataArray[i].picto])
