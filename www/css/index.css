@@ -60,10 +60,14 @@ body {
 	height:100%;
 	text-align:center;
 	background-color: White;
-	
+	padding:2px;
 	
 }
 
+.picto{
+	width:70px;
+	height:70px;
+}
 
 .tablepicto{
 	border: 1px solid LightGrey;
