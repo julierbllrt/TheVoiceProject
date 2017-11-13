@@ -15,6 +15,6 @@ document.addEventListener('deviceready', function () {
 function parler(){
 	alert("parler");
 	var text=getElementById("saisie");
-	alert(console.log(text.value]);
+	alert(text.value);
 	TTS.speak({text: text.value});
 }
