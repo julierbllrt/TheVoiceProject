@@ -1,10 +1,5 @@
 document.addEventListener('deviceready', function () {
 	
-	TTS["stop"] = function(){
-		TTS.speak({text: ''});
-	};
-	
-	
 	TTS.speak({
 		text: 'Bonjour',
 		locale: 'fr-FR',
@@ -14,4 +9,12 @@ document.addEventListener('deviceready', function () {
 	}, function (reason) {
 		console.log(reason);
 	});
+	
 },false);
+
+function parler(){
+	alert("parler");
+	var text=getElementById("saisie");
+	alert(console.log(text.value]);
+	TTS.speak({text: text.value});
+}
