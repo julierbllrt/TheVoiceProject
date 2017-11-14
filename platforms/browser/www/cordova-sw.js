@@ -18,7 +18,7 @@ under the License.
 */
 
 // Note, these will be updated automatically at build time
-var CACHE_VERSION = '1510144684448';
+var CACHE_VERSION = '1510655609332';
 var CACHE_LIST = [
     "/category/Action.html",
     "/category/Activité.html",
@@ -32,6 +32,7 @@ var CACHE_LIST = [
     "/cordova.js",
     "/cordova_plugins.js",
     "/css/index.css",
+    "/css/upload.css",
     "/favicon.ico",
     "/icon/home.png",
     "/icon/logo.png",
@@ -64,6 +65,7 @@ var CACHE_LIST = [
     "/img/7.png",
     "/img/8.png",
     "/img/9.png",
+    "/img/abeille.png",
     "/img/adresse_1.png",
     "/img/adulte.png",
     "/img/adultes.png",
@@ -104,13 +106,17 @@ var CACHE_LIST = [
     "/img/aéroports.png",
     "/img/aéroports_1.png",
     "/img/aéroport_1.png",
+    "/img/à moi.png",
+    "/img/à soupe.png",
     "/index.html",
     "/js/index.js",
     "/js/main.js",
+    "/js/speech.js",
     "/manifest.json",
     "/menu.html",
     "/picto.html",
     "/plugins/cordova-plugin-sqlite/www/SQLitePlugin.js",
+    "/sentiments.html",
     "/settings.html",
     "/subcategory/Amis.html",
     "/subcategory/Famille.html",
@@ -118,7 +124,8 @@ var CACHE_LIST = [
     "/subcategory/Métiers.html",
     "/subcategory/Pronom.html",
     "/subcategory/Salle_de_bain.html",
-    "/subcategory/Sports.html"
+    "/subcategory/Sports.html",
+    "/upload_page.html"
 ];
 
 this.addEventListener('install', function (event) {
