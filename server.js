@@ -1,3 +1,33 @@
+var express = require("express");
+var app = express();
+//var	http = require("http").Server(app).listen(80);
+var upload = require("express-fileupload");
+app.use(upload());
+
+console.log("server is running");
+
+app.get('/',function(req,res){
+		res.sendFile("/Cordova/TheVoiceProject/www/upload.html");
+});
+app.post("/",function(req,res){
+	if(req.files){
+		var file = req.files.filename,
+			filename = file.name;
+		file.mv(`./www/img/${req.param('category')}/${filename}`,function(err){
+		// file.mv("www/img/"req.param('category')""+filename,function(err){
+			if(err){
+				console.log(err)
+				res.send("error occured")
+			}
+			else{
+				res.send("Okayyyyyyyy!!!")
+			}
+		})
+	}
+});
+
+app.listen(80);
+
 /*var express = require("express");
 var app = express();
 */
@@ -22,7 +52,9 @@ http.createServer(function(request, response){
 }).listen(1337);
 */
 
-var express = require("express");
+
+
+/*var express = require("express");
 var app = express();
 //var	http = require("http").Server(app).listen(80);
 var upload = require("express-fileupload");
@@ -31,21 +63,20 @@ app.use(upload());
 console.log("Let's go");
 
 app.get('/',function(req,res){
-		res.sendFile("/Cordova/TheVoiceProject/www/upload_page.html");
+		res.sendFile("/Cordova/TheVoiceProject/www/upload.html");
 });
 app.post("/",function(req,res){
 	if(req.files){
 		var file = req.files.filename,
 			filename = file.name;
-		file.mv("www/img/"+filename,function(err){
+		file.mv("www/img/"+req.params('pseudo'),function(err){
 			if(err){
 				console.log(err)
 				res.send("error occured")
 			}
 			else{
 				res.send("Okayyyyyyyy!!!")
-			}
+
 		})
 	}
-});
-app.listen(80);
+}*/
