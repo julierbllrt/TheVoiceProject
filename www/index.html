@@ -12,45 +12,199 @@
 			
 		</head>
 		
+		
 		<body>
-			<section id="main">
+			<section id="page">
 			
-				<div id ="icon">
+				<div class ="icon">
 					<div> 
-						<a href="menu.html"><button> <img src="icon/menu.png"> </button></a>
+						<a href="index.html"><button> <img src="icon/home.png"> </button></a>
 					</div>
 					
 					<div>
-						<a href="index.html"><button> <img src="icon/home.png"> </button></a>
 						<a href="settings.html"><button> <img src="icon/settings.png"> </button></a>
 					</div>
 				</div>
+			
+				<form action="">
+					<input id="saisie" type="text" name="Saisie" value="Bonjour, je m'appelle Julie." >
+					<input id="submit" type="button" value="OK" onclick="parler()">
+				</form>
 				
+				<div id="divpicto">
 				
-				<table id ="tablemain">
-					<tr>
-						<td>
-							<a href="picto.html"><button >Picto</button></a>
-						</td>
+					<div class="fleche" id ="gauche">
+						<button> <img src="icon/left.png"> </button>
+					</div>
+				
+					<table id="tablecate0">
+						<tr>
+							<th ><button class="categorie">Personne</button></th>
+							<th ><button class="categorie">Verbe</button></th> 
+							<th ><button class="categorie">Adjectif</button></th>
+						</tr>
 						
-						<td>
-							<a href="picto.html"><button >Clavier</button></a>
-						</td>
-					</tr>
+						<tr>
+							<th ><button class="categorie">Favoris</button></th>
+							<th ><button class="categorie">A propos</button></th>
+							<th ><button class="categorie">SOS</button></th>
+						</tr>
+					</table>
 					
-					<tr>
-						<td colspan="2">
-							<a href="picto.html"><button >SOS</button></a>
-						</td>
-					</tr>
-				</table>
+					<table id="tablecate1">
+						<tr>
+							<th ><button class="categorie">Mot de liaison</button></th>
+							<th ><button class="categorie">Objet</button></th> 
+							<th ><button class="categorie">Resenti</button></th>
+						</tr>
+						
+						<tr>
+							<th ><button class="categorie">+</button></th>
+							<th ><button class="categorie">+</button></th>
+							<th ><button class="categorie">+</button></th>
+						</tr>
+					</table>
+					
+					<table id="tablecate2">
+						<tr>
+							<th ><button class="categorie">+</button></th>
+							<th ><button class="categorie">+</button></th> 
+							<th ><button class="categorie">+</button></th>
+						</tr>
+						
+						<tr>
+							<th ><button class="categorie">+</button></th>
+							<th ><button class="categorie">+</button></th>
+							<th ><button class="categorie">+</button></th>
+						</tr>
+					</table>
+					
+					
+					<!--
+					<div class="fleche" id="droitecate">
+						<button> <img src="icon/right.png"> </button>
+					</div>
+					
+					<div class="fleche" id ="gauchepic">
+						<button> <img src="icon/left.png"> </button>
+					</div>-->
+					
+					<table id="tablepicto0">
+						
+						<tr>
+							<td><button>0</button></td>
+							<td><button>Santé</button></td> 
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+					
 
-			</section>			
-			
+						</tr>
+						<tr>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td> 
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+
+
+						</tr>
+						<tr>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td> 
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+
+						</tr>
+					</table>
+					
+					<table id="tablepicto1">
+						
+						<tr>
+							<td><button>1</button></td>
+							<td><button>Santé</button></td> 
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+					
+
+						</tr>
+						<tr>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td> 
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+
+
+						</tr>
+						<tr>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td> 
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+
+						</tr>
+					</table>
+					
+					<table id="tablepicto2">
+						
+						<tr>
+							<td><button>2</button></td>
+							<td><button>Santé</button></td> 
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+					
+
+						</tr>
+						<tr>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td> 
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+
+
+						</tr>
+						<tr>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td> 
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+							<td><button>Santé</button></td>
+
+						</tr>
+					</table>
+					
+					<div class="fleche" id="droite">
+						<button> <img src="icon/right.png"> </button>
+					</div>
+					
+				</div>
+				
+				
+			</section>
+
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-			<script type="text/javascript" src="js/main.js"></script>
-			<script type="text/javascript" src="js/index.js"></script>
+			<script type="text/javascript" src="cordova.js"></script>
 			
+			<script type="text/javascript" src="js/main.js"></script>
+			<script type="text/javascript" src="js/speech.js"></script>
+			
+			<script type="text/javascript" src="js/index.js"></script>
+			<script type="text/javascript" src="js/Hide&Show.js"></script>
 			
 	    </body>
 </html>

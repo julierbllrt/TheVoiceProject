@@ -1,7 +1,7 @@
 
 body {
        background-color: WhiteSmoke;
-       font-size:12px;
+       font-size:3em;
        height:100%;
 	padding-left:1%;
 	
@@ -9,28 +9,153 @@ body {
        width:100%;
 }
 
-/* Portrait layout (default) */
-.app {
-       position:absolute;             /* position in the center of the screen */
-       left:50%;
-       top:50%;
-       height:50px;                   /* text area height */
-       width:225px;                   /* text area width */
-       text-align:center;
-       padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-       margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+
+#page{
+	border: 1px solid LightGrey;
+	border-radius: 5px 5px 5px 5px;
+	position:fixed;
+	top:10px;
+	min-height: calc(100vh - 20px);
+	
+	width:98%;
+	background-color:White;
+	
+	display:flex;
+	flex-direction:column;
+	justify-content:space-around;
+	align-items:center;
+	
+}
+
+.icon{
+	width:98%;
+	
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+}
+
+.icon button img{
+	margin-top:5px;
+	width:60px;
+}
+
+.icon button{
+	background-color: White;
+	border: none;
+}
+
+form{
+	
+	display:flex;
+	justify-content:center;
+	align-items:flex-end;
+	margin: 3%;
+	
+	height:50px;
+	width:75%;
+}
+
+#saisie{
+	border: 2px solid LightGrey;
+	border-radius: 5px 0px 0px 5px;
+	font-size:0.5em;
+	width:100%;
+	height:100%;
+}
+
+#submit{
+	font-size:0.5em;
+	border: 2px solid LightGrey;
+	border-radius: 0px 5px 5px 0px;
+	height:55px;
+	background-color: WhiteSmoke;
+}
+
+#divpicto{
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+	#margin: auto;
+}
+
+#tablecate0{
+	#border: 1px solid LightGrey;
+	#border-spacing: 35px  ;
+	width:75%;
+	table-layout:fixed;
+}
+
+#tablecate1{
+	#border: 1px solid LightGrey;
+	#border-spacing: 35px ;
+	width:75%;
+	table-layout:fixed;
+	display:none;
+}
+#tablecate2{
+	#border: 1px solid LightGrey;
+	#border-spacing: 35px ;
+	width:75%;
+	table-layout:fixed;
+	display:none;
+}
+
+#tablepicto0{
+	width:75%;
+	table-layout:fixed;
+	display:none;
+}
+
+#tablepicto1{
+	width:75%;
+	table-layout:fixed;
+	display:none;
+}
+
+#tablepicto2{
+	width:75%;
+	table-layout:fixed;
+	display:none;
+}
+
+#gauchepic button, #gauchepic img{
+	display:none;
+}
+#droitepic button, #droitepic img{
+	display:none;
+}
+
+.fleche{
+	width:10%;
+}
+
+#gauche img{
+	
+	display:none;
+}
+
+.fleche button img{
+	margin-top:5px;
+	width:60px;
+}
+
+.fleche button{
+	background-color: White;
+	border: none;
 }
 
 #page th{
 	background-color: WhiteSmoke;
 	text-transform: uppercase;
+	border: 20px solid White;
+	width:120px;
+	height:100px;
+	text-align:center;
+	padding:0;
+	
 }
 
-#page th button.categorie{
-	background-color: Gainsboro ;
-	#text-transform: uppercase;
-
-}
 
 #page th button{
 	border: none;
@@ -40,11 +165,14 @@ body {
 	text-align:center;
 	text-transform: uppercase;
 	background-color: inherit;
+	font-size:0.5em;
 }
 
 
-#page th, td{
-	border: 1px solid Grey;
+
+
+ td{
+	border: 2px solid Grey;
 	border-collapse: collapse;
 	width:70px;
 	height:70px;
@@ -64,124 +192,16 @@ body {
 	
 }
 
+
+
 .picto{
-	width:70px;
-	height:70px;
+	width:80px;
+	height:80px;
 }
 
-.tablepicto{
-	border: 1px solid LightGrey;
-	border-collapse: collapse;
-	width:100%;
-	table-layout:fixed;
+.mot{
+	margin:0;
+	#font-size:2em;
+	font-size:0.5em;
 }
 
-#page{
-	border: 1px solid LightGrey;
-	border-radius: 5px 5px 5px 5px;
-	position:fixed;
-	top:10px;
-	min-height: calc(100vh - 20px);
-	
-	width:98%;
-	background-color:White;
-	
-	display:flex;
-	flex-direction:column;
-	justify-content:space-between;
-	align-items:center;
-	
-}
-
-
-form{
-	
-	display:flex;
-	justify-content:center;
-	align-items:flex-end;
-	margin: auto;
-	
-	height:25px;
-	width:75%;
-	
-}
-
-#saisie{
-	border: 1px solid LightGrey;
-	border-radius: 5px 0px 0px 5px;
-	width:100%;
-	height:100%;
-	
-}
-#submit{
-	border: 1px solid LightGrey;
-	border-radius: 0px 5px 5px 0px;
-	height:29px;
-	background-color: WhiteSmoke;
-	
-}
-
-
-
-/*css page index.html*/
-
-#main{
-	border: 1px solid LightGrey;
-	border-radius: 5px 5px 5px 5px;
-	position:fixed;
-	top:10px;
-	min-height: calc(100vh - 20px);
-	
-	width:98%;
-	background-color:White;
-	
-	display:flex;
-	flex-direction:column;
-	justify-content:space-around;
-	align-items:center;
-	
-}
-
-#icon{
-	width:98%;
-	display:flex;
-	
-	justify-content:space-between;
-	align-items:center;
-}
-
-#icon button img{
-	margin-top:5px;
-	width:40px;
-}
-
-#icon button{
-	background-color: White;
-	border: none;
-}
-
-#tablemain{
-	table-layout: fixed;
-	border: none;
-	width:80%;
-	
-}
-
-#tablemain td{
-	border: 20px solid White;
-	width:50%;
-	height:120px;
-	text-align:center;
-	padding:0;
-	
-}
-
-#tablemain td button{
-	border: none;
-	word-wrap: break-word;
-	width:100%;
-	height:120px;
-	text-align:center;
-	background-color: Lavender;
-	font-size: 3em;
-}

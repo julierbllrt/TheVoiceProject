@@ -19,7 +19,7 @@ function parler() {
 //document.addEventListener('deviceready', parler(),false);
 
 function parler(){
-	//alert("parler");
+	alert("parler");
 	var word=document.getElementById("saisie");
 	var u = new SpeechSynthesisUtterance();
        var txt = "";
@@ -27,4 +27,5 @@ function parler(){
        u.text = txt;
        u.lang = 'fr-FR';
        speechSynthesis.speak(u);
+	word.value="";
 }
