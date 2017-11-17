@@ -102,21 +102,24 @@ form{
 }
 
 #tablepicto0{
-	width:75%;
+	width:80%;
 	table-layout:fixed;
 	display:none;
+	border-spacing:30px;
 }
 
 #tablepicto1{
-	width:75%;
+	width:80%;
 	table-layout:fixed;
 	display:none;
+	border-spacing:30px;
 }
 
 #tablepicto2{
-	width:75%;
+	width:80%;
 	table-layout:fixed;
 	display:none;
+	border-spacing:30px;
 }
 
 #gauchepic button, #gauchepic img{
@@ -173,7 +176,7 @@ form{
 
  td{
 	border: 2px solid Grey;
-	border-collapse: collapse;
+	border-spacing:10px;
 	width:70px;
 	height:70px;
 	text-align:center;
@@ -195,8 +198,8 @@ form{
 
 
 .picto{
-	width:100px;
-	height:100px;
+	width:90px;
+	height:90px;
 }
 
 .mot{
