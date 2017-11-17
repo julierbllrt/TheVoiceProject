@@ -1,24 +1,68 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="css/upload.css">
-</head>
-<body>
-	<h1>Envie de personaliser ?</h1>
-	<p>Bonjour, je suis Alice enchanté, nous allons voir ensemble comment bien selectionner un pictogramme</p><br>
-	<p>Petit conseil: prennez le temps de bien lire les étapes avant de commencer</p><br>
-	<h4>étape 1: télecharger l'image qui vous convient</h4><br>
-	<h4>étape 2: indiquer dans la zone de texte la signification du pictogramme</h4><br>
-	<form method="post" enctype="multipart/form-data" action="/">
-		<p>Category du pictogramme: <input type="text" name="category"/></p>
-   		<p>Signification du pictogramme: <input type="text" name="pseudo"/></p>
-	<br>
-	<h4>étape 3: cliquez sur "Choisissez votre ficher </h4><br>
-	<p>Une fois apres avoir cliqué cette écran devrait apparaître <img src="prendreUneCaptureDEcran"></p><br>
-	<h4>étape 4: cliquez sur valider pour finaliser la personalisation du pictogramme</h4><br>
-		<input type="file" name="filename">
-		<input type="submit" name="upload">
-	</form>
-</body>
+	<head>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/upload.css">
+	</head>
+	<body>
+		<section id="page">
+			<div class ="icon">
+				<div> 
+					<a href="index.html"><button> <img src="icon/home.png"> </button></a>
+				</div>
+				
+				<div>
+					<a href="settings.html"><button> <img src="icon/settings.png"> </button></a>
+				</div>
+			</div>
+		
+			<h2>Interface de personnalisation</h1>
+			<h3 >Ajouter un pictogramme</h3>
+			<div class="texte">
+				<p class="etape"><span>Etape 1:</span>Télechargez l'image qui vous convient. Elle doit être dans l'espcae de stockage de votre tablette.</p>
+				<p class="etape"><span>Etape 2:</span>Cliquez sur "Choisissez votre fichier". Dans la fenêtre ainsi ouverte, choisissez l'image pour le nouveau pictogramme.</p>
+				<p class="etape"><span>Etape 3:</span>Indiquez dans la zone de saisie, la catégorie ainsi que la signification du nouveau pictogramme </p>
+				<p class="etape"><span>Etape 4:</span>Cliquez sur "Valider" pour finaliser la personalisation du pictogramme.</p>
+			</div>
+			
+			
+			<form id="ajout_fichier" method="post" enctype="multipart/form-data" action="/">
+				<input class="inputfile" id="files" type="file" name="filename" >
+				<label for="files">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+					Choisir un fichier...
+				</label>
+				<output id="list"></output>
+				<p>Catégorie du pictogramme: <input class="saisie" type="text" name="category"/>
+				Signification du pictogramme: <input class="saisie" type="text" name="pseudo"/></p>
+				<input class="submit" type="submit" name="upload">
+				
+			</form>
+			
+		</section>
+		
+		<script>
+
+			if (window.FileReader) {
+				function handleFileSelect(evt) {
+					var files = evt.target.files;
+					var f = files[0];
+					var reader = new FileReader();
+				
+					reader.onload = (function(theFile) {
+						return function(e) {
+							document.getElementById('list').innerHTML = ['<img src="', e.target.result,'" title="', theFile.name, '" />'].join('');
+						};
+					})(f);
+		    
+					reader.readAsDataURL(f);
+				}
+			} else {
+				alert('This browser does not support FileReader');
+			}
+			
+			document.getElementById('files').addEventListener('change', handleFileSelect, false);
+	    
+     		</script>
+	</body>
 </html>

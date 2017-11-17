@@ -39,7 +39,7 @@ function populateDB(tx) {
  					{picto: "img/plus.png", mot: "plus"},
  					{picto: "img/plus.png", mot: "plus"},
  					{picto: "img/plus.png", mot: "plus"},
- 				{picto: "img/plus.png", mot: "plus"},
+					{picto: "img/plus.png", mot: "plus"},
  					{picto: "img/plus.png", mot: "plus"},
  					{picto: "img/plus.png", mot: "plus"},
  					{picto: "img/plus.png", mot: "plus"},
@@ -91,7 +91,7 @@ function successCB() {
 function onDeviceReady() {
 	//alert("going OnDeviceReady");
 	var db = window.openDatabase("Database", "1.0", "Picto Demo", 200000);
-	db.transaction(populateDB, errorCB, successCB);
+	db.transaction(populateDB, errorCB);
 }
 
 function errorCB(err) {
@@ -134,6 +134,7 @@ function onClickCategory(category){
  }
  
  function querySuccessClickCategory(tx, results){
+	alert("going querySuccess");
 	var imgPicto="";
  	var len = results.rows.length;
  	for (var i = 0; i < len; i++) {
@@ -144,7 +145,7 @@ function onClickCategory(category){
  }
  
  
- 
+ /*
  
  // Insert DB
  //
@@ -157,4 +158,4 @@ function onClickCategory(category){
  function insertDb(tx, picto, mot){
  	tx.executeSql('INSERT INTO (picto,mot) VALUES(?,?)', ["img/picto, mot])
  }
- 
+ */
