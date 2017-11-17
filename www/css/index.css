@@ -50,7 +50,7 @@ form{
 	display:flex;
 	justify-content:center;
 	align-items:flex-end;
-	margin: 3%;
+	margin: 1%;
 	
 	height:50px;
 	width:75%;
@@ -195,13 +195,13 @@ form{
 
 
 .picto{
-	width:80px;
-	height:80px;
+	width:100px;
+	height:100px;
 }
 
 .mot{
 	margin:0;
 	#font-size:2em;
-	font-size:0.5em;
+	#font-size:0.5em;
 }
 

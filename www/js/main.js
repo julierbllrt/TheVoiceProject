@@ -29,6 +29,30 @@ function populateDB(tx) {
  					{picto: "img/chiffresnombres/5.png", mot: "cinq"},
  					{picto: "img/chiffresnombres/2 euros.png", mot: "deux euros"},
  					{picto: "img/chiffresnombres/5 euros.png", mot: "cinq euros"},
+					{picto: "img/chiffresnombres/0.png", mot: "zeros"},
+ 					{picto: "img/chiffresnombres/1.png", mot: "un"},
+ 					{picto: "img/chiffresnombres/2.png", mot: "deux"},
+ 					{picto: "img/chiffresnombres/3.png", mot: "trois"},
+ 					{picto: "img/chiffresnombres/4.png", mot: "quatre"},
+ 					{picto: "img/chiffresnombres/5.png", mot: "cinq"},
+ 					{picto: "img/chiffresnombres/2 euros.png", mot: "deux euros"},
+ 					{picto: "img/chiffresnombres/5 euros.png", mot: "cinq euros"},
+					{picto: "img/chiffresnombres/0.png", mot: "zeros"},
+ 					{picto: "img/chiffresnombres/1.png", mot: "un"},
+ 					{picto: "img/chiffresnombres/2.png", mot: "deux"},
+ 					{picto: "img/chiffresnombres/3.png", mot: "trois"},
+ 					{picto: "img/chiffresnombres/4.png", mot: "quatre"},
+ 					{picto: "img/chiffresnombres/5.png", mot: "cinq"},
+ 					{picto: "img/chiffresnombres/2 euros.png", mot: "deux euros"},
+ 					{picto: "img/chiffresnombres/5 euros.png", mot: "cinq euros"},
+					{picto: "img/chiffresnombres/0.png", mot: "zeros"},
+ 					{picto: "img/chiffresnombres/1.png", mot: "un"},
+ 					{picto: "img/chiffresnombres/2.png", mot: "deux"},
+ 					{picto: "img/chiffresnombres/3.png", mot: "trois"},
+ 					{picto: "img/chiffresnombres/4.png", mot: "quatre"},
+ 					{picto: "img/chiffresnombres/5.png", mot: "cinq"},
+ 					{picto: "img/chiffresnombres/2 euros.png", mot: "deux euros"},
+ 					{picto: "img/chiffresnombres/5 euros.png", mot: "cinq euros"},
  					{picto: "img/affiche/affiches.png", mot: "affiches"},
  					{picto: "img/affiche/affiche_1.png", mot: "affiche_1"},
  					{picto: "img/affiche/affiche_2.png", mot: "affiche_2"},
@@ -138,7 +162,7 @@ function onClickCategory(category){
 	var imgPicto="";
  	var len = results.rows.length;
  	for (var i = 0; i < len; i++) {
- 		imgPicto +='<img id="' + results.rows.item(i).id + '" class="picto" src="' + results.rows.item(i).picto + '"><p>' + results.rows.item(i).mot + '</p>';
+ 		imgPicto +='<img id="' + results.rows.item(i).id + '" class="picto" src="' + results.rows.item(i).picto + '"><p class="mot">' + results.rows.item(i).mot + '</p>';
  		document.getElementById("picto"+i).innerHTML = imgPicto;
  		imgPicto="";
  	} 
