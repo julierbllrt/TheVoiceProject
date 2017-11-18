@@ -1,26 +1,26 @@
-/* document.addEventListener('deviceready', parler(), false);
+document.addEventListener('deviceready', parler());
 
 
 function parler() {
+	var word=document.getElementById("saisie");
        
-    TTS
-        .speak({
-            text: 'hello, world!',
-            locale: 'en-GB',
-            rate: 0.75
-        }, function () {
-            alert('success');
-        }, function (reason) {
-            alert(reason);
-        });
+	TTS
+		.speak({
+		     text:word.value,
+		     locale:'fr-FR',
+		     rate: 1
+		}, function () {
+		     console.log('success');
+		}, function (reason) {
+		     console.log(reason);
+		});
 }
- */
-
-//document.addEventListener('deviceready', parler(),false);
+/*
+//synthese vocale fonctionnelle uniquement sur ordi
 
 function parler(){
 	alert("parler");
-	var word=document.getElementById("saisie");
+	
 	var u = new SpeechSynthesisUtterance();
        var txt = "";
        txt = word.value;
@@ -29,3 +29,4 @@ function parler(){
        speechSynthesis.speak(u);
 	word.value="";
 }
+*/
