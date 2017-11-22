@@ -14,6 +14,7 @@ function parler() {
 		}, function (reason) {
 		     console.log(reason);
 		});
+	word.value="";
 }
 /*
 //synthese vocale fonctionnelle uniquement sur ordi
