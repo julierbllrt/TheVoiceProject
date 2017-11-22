@@ -167,7 +167,6 @@ form{
 	height:100%;
 	text-align:center;
 	text-transform: uppercase;
-	background-color: inherit;
 	font-size:0.5em;
 }
 
@@ -206,5 +205,21 @@ form{
 	margin:0;
 	#font-size:2em;
 	#font-size:0.5em;
+}
+
+#Verbe{
+	background-color:Green;
+}
+#Personne{
+	background-color:Yellow;
+}
+#Resenti{
+	background-color:Red;
+}
+#Objet{
+	background-color:Orange;
+}
+#Adjectif{
+	background-color:Blue;
 }
 
