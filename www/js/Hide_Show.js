@@ -3,8 +3,19 @@ $(document).ready(function(){
 
 	
  
- 
+ 	$('#home').click(function(){
+ 		$('#tablecate'+i).css("display", "none");
+ 		$('#tablepicto'+n).css("display", "none");
+ 		$('#gauche button').css("display", "none");
+ 		$('#gauche img').css("display", "none");
+ 		$('#droite button').css("display", "table");
+ 		$('#droite img').css("display", "table");
+ 		$('#tablecate0').css("display", "table");	
+ 		i=0;
+ 		n=0;
+ 	});
 	
+
 	$('.categorie').click(function(){
 		//console.log(this.innerHTML);
 		//onClickCategory(this.innerHTML);
