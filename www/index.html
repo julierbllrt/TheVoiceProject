@@ -190,6 +190,31 @@
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 			<script type="text/javascript" src="cordova.js"></script>
 			
+			<script>
+
+				if (window.FileReader) {
+					function handleFileSelect(evt) {
+						var files = evt.target.files;
+						var f = files[0];
+						var reader = new FileReader();
+					
+						reader.onload = (function(theFile) {
+							return function(e) {
+								document.getElementById('list').innerHTML = ['<img src="', e.target.result,'" title="', theFile.name, '" />'].join('');
+							};
+						})(f);
+			    
+						reader.readAsDataURL(f);
+					}
+				} 
+				else {
+					alert('This browser does not support FileReader');
+				}
+				
+				document.getElementById('files').addEventListener('change', handleFileSelect, false);
+		    
+			</script>
+			
 			<script type="text/javascript" src="js/dbStart.js"></script>
 			<script type="text/javascript" src="js/Hide_Show.js"></script>
 			<script type="text/javascript" src="js/main.js"></script>
