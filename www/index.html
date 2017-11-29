@@ -18,7 +18,7 @@
 			
 				<div class ="icon">
 					<div> 
-						<button id="home"><img src="icon/home.png" onclick=""></button>
+						<button id="home"><img src="icon/home.png" ></button>
 					</div>
 					
 					<div>
@@ -26,7 +26,7 @@
 					</div>
 				</div>
 			
-				<form action="">
+				<form id="form_saisie" action="">
 					<input id="saisie" type="text" name="Saisie" value="" >
 					<input id="submit" type="button" value="OK" onclick="parler()">
 				</form>
@@ -36,7 +36,30 @@
 					<div class="fleche" id ="gauche">
 						<button> <img src="icon/left.png"> </button>
 					</div>
-				
+					
+					<div id ="corps">
+						<div class="texte">
+							<p class="etape"><span>Etape 1:</span>Télechargez l'image qui vous convient. Elle doit être dans l'espace de stockage de votre tablette.</p>
+							<p class="etape"><span>Etape 2:</span>Cliquez sur "Choisissez votre fichier". Choisissez l'image pour le nouveau pictogramme.</p>
+							<p class="etape"><span>Etape 3:</span>Indiquez la catégorie ainsi que la signification du nouveau pictogramme </p>
+							<p class="etape"><span>Etape 4:</span>Cliquez sur "Valider" pour finaliser.</p>
+						</div>
+						
+						
+						<form id="ajout_fichier" method="post" enctype="multipart/form-data" action="/">
+							<input class="inputfile" id="files" type="file" name="filename" >
+							<label for="files">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+								Choisir un fichier...
+							</label>
+							<output id="list"></output>
+							<p>Catégorie du pictogramme: <input class="saisie" type="text" name="category"/>
+							Signification du pictogramme: <input class="saisie" type="text" name="pseudo"/></p>
+							<input class="submit" type="submit" name="upload">
+							
+						</form>
+					</div>
+					
 					<table id="tablecate0">
 						<tr>
 							<th ><button class="categorie" id ="Personne"onclick="onClickCategory(this.id)">Personne</button></th>
@@ -46,16 +69,16 @@
 						
 						<tr>
 							<th ><button class="categorie" id ="Favoris" onclick="onClickCategory(this.id)">Favoris</button></th>
-							<th ><button class="categorie" id="a_propos"onclick="onClickCategory(this.id)">A propos</button></th>
-							<th ><button class="categorie" id ="sos" onclick="onClickCategory(this.id)">SOS</button></th>
+							<th ><button class="categorie" id="A_propos"onclick="onClickCategory(this.id)">A propos</button></th>
+							<th ><button class="categorie" id ="SOS" onclick="onClickCategory(this.id)">SOS</button></th>
 						</tr>
 					</table>
 					
 					<table id="tablecate1">
 						<tr>
-							<th ><button class="categorie" id ="mot_de_liaison" onclick="onClickCategory(this.id)">Mot de liaison</button></th>
-							<th ><button class="categorie" id ="objet"onclick="onClickCategory(this.id)">Objet</button></th> 
-							<th ><button class="categorie" id ="resenti"onclick="onClickCategory(this.id)">Resenti</button></th>
+							<th ><button class="categorie" id ="Mot_de_liaison" onclick="onClickCategory(this.id)">Mot de liaison</button></th>
+							<th ><button class="categorie" id ="Objet"onclick="onClickCategory(this.id)">Objet</button></th> 
+							<th ><button class="categorie" id ="Resenti"onclick="onClickCategory(this.id)">Resenti</button></th>
 						</tr>
 						
 						<tr>
@@ -148,7 +171,7 @@
 							<td><button id="picto32" onclick="onClickPicto(this.id)"></button></td>
 							<td><button id="picto33" onclick="onClickPicto(this.id)"></button></td>
 							<td><button id="picto34" onclick="onClickPicto(this.id)"></button></td>
-							<td><button id="picto35" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto35" class="dispo" ></button></td>
 
 
 						</tr>
