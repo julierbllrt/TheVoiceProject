@@ -11,14 +11,13 @@ $(document).ready(function(){
  		$('#droite button').css("display", "table");
  		$('#droite img').css("display", "table");
  		$('#tablecate0').css("display", "table");	
+		$('#corps').css("display","none");
  		i=0;
  		n=0;
  	});
 	
 
 	$('.categorie').click(function(){
-		//console.log(this.innerHTML);
-		//onClickCategory(this.innerHTML);
 		$('#gauche button').css("display","none");
 		$('#gauche img').css("display", "none");
 		$('#tablecate'+i).css("display", "none");
@@ -79,6 +78,18 @@ $(document).ready(function(){
 				$('#gauche img').css("display", "none");
 			}
 		}
+	});
+	
+	$('.dispo').click(function(){
+		$('#tablepicto'+n).css("display", "none");
+		$('#droite button').css("display","none");
+		$('#droite img').css("display", "none");
+		$('#gauche button').css("display","none");
+		$('#gauche img').css("display", "none");
+		$('#form_saisie').css("display","none");
+		
+		$('#corps').css("display","flex");
+		
 	});
 
 });

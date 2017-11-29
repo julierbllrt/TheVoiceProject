@@ -1,7 +1,7 @@
 
 body {
        background-color: WhiteSmoke;
-       font-size:3em;
+       font-size:1em;
        height:100%;
 	padding-left:1%;
 	
@@ -27,6 +27,13 @@ body {
 	
 }
 
+#corps{
+	display:none;
+	#flex-direction:row;
+	#justify-content:space-around;
+	#align-items:center;
+}
+
 .icon{
 	width:98%;
 	
@@ -45,7 +52,70 @@ body {
 	border: none;
 }
 
-form{
+.texte{
+	display:block;
+	font-size:1.5em;
+}
+
+#ajout_fichier{
+	#background-color:yellow;
+	border:1px solid Grey;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	padding:10px;
+	
+	width:75%;
+}
+
+.saisie{
+	border: 1px solid Grey;
+	border-radius: 5px 5px 5px 5px;
+	font-size:1em;
+	width:100%;
+	height:100%;
+}
+
+.submit{
+	font-size:1em;
+	border: 1px solid Grey;
+	border-radius: 5px 5px 5px 5px;
+	height:30px;
+	background-color: WhiteSmoke;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+	font-size:1.5em;
+}
+
+.inputfile + label {
+    cursor: pointer; 
+}
+
+img{
+	width:100px;
+}
+
+span{
+	font-weight:700;
+}
+#ajout_fichier p{
+	padding-left:10px;
+	padding-right:10px;
+	font-size:1.5em;
+}
+label{
+	font-size:1.5em;
+}
+
+#form_saisie{
 	
 	display:flex;
 	justify-content:center;
@@ -59,13 +129,13 @@ form{
 #saisie{
 	border: 2px solid LightGrey;
 	border-radius: 5px 0px 0px 5px;
-	font-size:0.5em;
+	font-size:1.5em;
 	width:100%;
 	height:100%;
 }
 
 #submit{
-	font-size:0.5em;
+	font-size:1.5em;
 	border: 2px solid LightGrey;
 	border-radius: 0px 5px 5px 0px;
 	height:55px;
@@ -167,7 +237,7 @@ form{
 	height:100%;
 	text-align:center;
 	text-transform: uppercase;
-	font-size:0.5em;
+	font-size:1.5em;
 }
 
 
@@ -201,7 +271,7 @@ form{
 	height:90px;
 }
 
-.mot{
+.mot, #profil p{
 	margin:0;
 	#font-size:2em;
 	#font-size:0.5em;
@@ -222,4 +292,10 @@ form{
 #Adjectif{
 	background-color:Blue;
 }
+
+#profil{
+	display:flex;
+	flex-direction:column;
+}
+
 
