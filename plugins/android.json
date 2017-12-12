@@ -7,10 +7,16 @@
     "files": {}
   },
   "installed_plugins": {
+    "cordova-plugin-sqlite": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
-    "cordova-plugin-sqlite": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-env": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },
