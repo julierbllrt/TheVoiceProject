@@ -1,67 +1,59 @@
-$(document).ready(function(){
-	i=0;
-	$('#nom').value;
-	$('#prenom').value;
-	$('#birthday').value;
-	$('#tel').value;
-	$('#description').value;
-
-	
- 
- 	$('#set').click(function(){
-		alert("click");
-		var filepath = "C:\Users\ISEN\Documents\Projet_S1M1\TheVoiceProject\www\test.txt";
- 		var nom =document.getElementById('nom').value;
-		alert(nom);
-		writeTextFile(filepath, nom);
- 		$('#prenom');
-		$('#birthday');
-		$('#tel');
-		$('#description');
-		
- 	});
-	
-	
+document.addEventListener('deviceready', onDeviceReady, false);
+document.getElementById("set").addEventListener("touchend", function(){
+	var nom =document.getElementById('nom');
+	alert(nom.value);
+	writeLog(nom.value);		
 });
 
-jQuery(function($) {
-       $('#form_addjts').submit(function(){
-              writeToFile({
-			id: $(this).find('.id').val(), 
-			content: $(this).find('.content').val()
-              });
-              return false;
-       }); 
-       function writeToFile(data){
-            var fso = new ActiveXObject("Scripting.FileSystemObject");
-            var fh = fso.OpenTextFile("D:\\data.txt", 8);
-            fh.WriteLine(data.id + ',' + data.content);
-            fh.Close(); 
-       } 
-}); 
+var logOb;
 
-////////////////////////////////////////////////////
+function fail(e) {
+	console.log("FileSystem Error");
+	console.log(e);
+}
+   
+function onDeviceReady() {
+	alert("devideready function");
+	
+	window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dir) {
+		alert("window.truc function");
+		console.log(dir.nativeURL);
+		console.log("got main dir", dir);
+		dir.getFile("log.txt", {create:true, exclusive: false}, function(file) {
+			console.log("got the file", file);
+			logOb = file;
+			writeLog("AppStart");			
+		});
+	});
 
-function writeTextFile(filepath, output) {
-	alert("write");
-	var txtFile = new File(filepath);
-	txtFile.open("w"); 
-	alert("open");
-	txtFile.writeln(output);
-	alert("write");
-	txtFile.close();
-	alert("close");
 }
 
-////////////////////////////////////////////////////
 
-function readTextFile(filepath) {
-	var str = "";
-	var txtFile = new File(filepath);
-	txtFile.open("r");
-	while (!txtFile.eof) {
-		// read each line of text
-		str += txtFile.readln() + "\n";
-	}
-	return str;
+function writeLog(str) {
+	alert("in writeLog ");
+	if(!logOb){
+		alert("echec log "+str);
+	} 
+	var log =str+" suc.\n"
+	alert("going to log "+log);
+	logOb.createWriter(function(fileWriter) {
+		fileWriter.seek(fileWriter.length);         
+		var blob = new Blob([log], {type:'text/plain'});
+		console.log(blob);
+		fileWriter.write(blob);
+		alert("ok, in theory i worked");
+	}, fail);
+}
+
+function justForTesting() {
+	logOb.file(function(file) {
+		var reader = new FileReader();
+
+		reader.onloadend = function(e) {
+			alert(this.result);
+		};
+
+		reader.readAsText(file);
+	}, fail);
+
 }
