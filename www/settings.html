@@ -44,34 +44,34 @@
 						</tr>
 						<tr>
 							<td>
-								<p>Nom: </p><input id="nom" class="saisie" type="text" name="category"/>
+								<p>Nom: </p><input id="nom" class="saisie" type="text" name="nom"/>
 							</td>
 							
 						</tr>
 						<tr>
 							<td>
-								<p>Prénom: </p><input id="prenom" class="saisie" type="text" name="pseudo"/>
+								<p>Prénom: </p><input  id="prenom" class="saisie" type="text" name="prenom"/>
+							</td>
+						</tr><!--
+						<tr>
+							<td>
+								<p>Date de naissance: </p><input  valueAsDate ="1999-01-01" id="birthday"class="saisie" type="date" name="pseudo"/>
+							</td>
+						</tr>-->
+						<tr>
+							<td>
+								<p>Numéro de téléphone: </p><input  id="tel" class="saisie" type="number" name="tel"/>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<p>Date de naissance: </p><input id="birthday"class="saisie" type="date" name="pseudo"/>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<p>Numéro de téléphone: </p><input id="tel" class="saisie" type="text" name="pseudo"/>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<p>Description: </p><textarea id="description" class="saisie" type="text" name="category"></textarea>
+								<p>Description: </p><textarea id="description" class="saisie" type="text" name="des"></textarea>
 							</td>
 							
 						</tr>
 						<tr>
 							<td>
-								<input id ="set" class="submit" type="submit" name="upload" value="Enregistrer">
+								<input id ="set" class="submit" type="submit" name="upload" value="Enregistrer" >
 							</td>
 						</tr>
 						
@@ -82,11 +82,12 @@
 			</section>			
 			
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+			<script type="text/javascript" src="cordova.js"></script>
 			
-			<script type="text/javascript" src="js/index.js"></script>
 			<script type="text/javascript" src="js/settings.js"></script>
-			<script type="text/javascript" src="js/main.js"></script>
 			
+			<script type="text/javascript" src="js/main.js"></script>
+			<script type="text/javascript" src="js/index.js"></script>
 			
 	    </body>
 </html>

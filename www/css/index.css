@@ -261,6 +261,7 @@ label{
 	text-align:center;
 	background-color: White;
 	padding:2px;
+	position: relative;
 	
 }
 
@@ -296,6 +297,20 @@ label{
 #profil{
 	display:flex;
 	flex-direction:column;
+}
+
+
+.cross {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    margin: auto; }
+
+#deletemode{
+	display: block;
 }
 
 
