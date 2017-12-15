@@ -1,35 +1,69 @@
+//document.addEventListener('deviceready', onDeviceReady, false);
+document.getElementById('files').addEventListener('change', handleFileSelect, false);
 var category;
-$(document).ready(function(){
-	if (window.FileReader) {
-		function handleFileSelect(evt) {
-			var files = evt.target.files;
-			var f = files[0];
-			var reader = new FileReader();
-			reader.onload = (function(theFile) {
-				return function(e) {
-					document.getElementById('list').innerHTML = ['<img src="', e.target.result,'" title="', theFile.name, '" />'].join('');
-				};
-			})(f);
-    
-			reader.readAsDataURL(f);
-			test(f);
-		}
-	} 
-	else {
-		alert('This browser does not support FileReader');
-	}
+
+function fail(e) {
+	console.log("FileSystem Error");
+	console.log(e);
+}
+
+function handleFileSelect(evt) {
+	var files = evt.target.files;
+	var f = files[0];
+	console.log(files);
+	console.log(f.name);
+	var reader = new FileReader();
 	
-	document.getElementById('files').addEventListener('change', handleFileSelect, false);
-	function test(fichier) {
-		//var root = "/img/Personnes";//cordova.file.externalApplicationStorageDirectory
-		//alert(root);
-		//var parentName = root.substring(root.lastIndexOf('/')+1);
-		//alert(parentName);
-		//var parentEntry = new DirectoryEntry(parentName,root);
-		//alert(parentEntry);
-		fichier.CopyFile (navigator.Env.getDirectory("Downloads"), cordova.file.externalApplicationStorageDirectory);
-		alert("ENFINNNNNNNNNNNNNNN");
-	}	    
+	reader.onload = (function(theFile) {
+		return function(e) {
+			document.getElementById('list').innerHTML = ['<img src="', e.target.result,'" title="', theFile.name, '" />'].join('');
+			//console.log(e.target);
+			
+			
+			
+		};
+	})(f);
+	
+	navigator.Env.getDirectory("Downloads", 
+		function (path) {
+			if (path) {
+				window.resolveLocalFileSystemURL("file:///storage/emulated/0/"+ path, function(dir) {
+					console.log("got main dir", dir);
+					dir.getFile(f.name, {create:false}, function(file) {
+						console.log(cordova.file.externalDataDirectory);
+						window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dirEntry) {
+							console.log(dirEntry);
+							file.copyTo(dirEntry);
+						}, fail);
+						console.log("got the file", file);
+						logOb = file;		
+						console.log('getfile');
+						
+					});
+				});
+			}
+		},
+		function (error) {
+			console.log("getDirectory error: " + error);
+		}
+	);
+
+	reader.readAsDataURL(f);
+	//console.log(f.toURL());
+}
+	
+	
+	
+function test(fichier) {
+	//var root = "/img/Personnes";//cordova.file.externalApplicationStorageDirectory
+	//alert(root);
+	//var parentName = root.substring(root.lastIndexOf('/')+1);
+	//alert(parentName);
+	//var parentEntry = new DirectoryEntry(parentName,root);
+	//alert(parentEntry);
+	fichier.CopyFile (navigator.Env.getDirectory("Downloads"), cordova.file.externalApplicationStorageDirectory);
+	alert("ENFINNNNNNNNNNNNNNN");
+}	    
 
 var txt = "";
 var image = "";/*
@@ -97,4 +131,3 @@ $(document).ready(function(){
 	});
 });*/
 
-});
