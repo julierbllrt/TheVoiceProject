@@ -23,6 +23,7 @@ function queryDbClickPicto(tx, id) {
 
 function querySuccessClickPicto(tx, results) {
 	var txtPicto = " " + results.rows.item(0).mot;
+	blabla(txtPicto);
 	document.getElementById("saisie").value += txtPicto;
 }
 
@@ -67,7 +68,7 @@ function onClickCategory(category){
 					actualbutton.setAttribute('onclick', 'goDelete(this.id)');
 				}
 			}
- 		imgPicto +='<div class="'+ category +'" id="test'+k+'"><img id="' + results.rows.item(k).id + '" class="picto" src="' + results.rows.item(k).picto + '"><p class="mot">' + results.rows.item(k).mot + '</p>'+'<img class="cross" src="img/croix png projet.png">'+'</div>';
+ 		imgPicto +='<div class="'+ category +'" id="test'+k+'"><img id="' + results.rows.item(k).id + '" class="picto" src="' + results.rows.item(k).picto + '"><p class="mot">' + results.rows.item(k).mot + '</p>'+'<img class="cross" src="icon/delete.png">'+'</div>';
  		actualbutton.innerHTML = imgPicto;
  		imgPicto="";
 
@@ -75,7 +76,7 @@ function onClickCategory(category){
 	for(var j = len; j < 36; j++){
 		var actualbutton = document.getElementById("picto"+j);
 		if(!actualbutton.hasAttribute('class')){
-			actualbutton.removeAttribute('onclick');
+			actualbutton.setAttribute('onclick','dispoPicto()');
 			actualbutton.setAttribute('class', 'dispo');
 		}
  	}

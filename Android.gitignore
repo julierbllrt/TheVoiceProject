@@ -1,29 +1,7 @@
-# Built application files
-
-*.apk
-
-*.ap_
-
-
-
-# Files for the ART/Dalvik VM
-
-*.dex
-
-
-
-# Java class files
-
-*.class
-
-
-
-# Generated files
-
-bin/
-
+#Cordova files
 plugins/
 
-out/
+platforms/
 
 
+package.json

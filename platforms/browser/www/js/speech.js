@@ -1,30 +1,34 @@
-/* document.addEventListener('deviceready', parler(), false);
-
+function blabla(txt){
+		TTS
+			.speak({
+			     text:txt,
+			     locale:'fr-FR',
+			     rate: 1
+			}, function () {
+			     console.log('success');
+			}, function (reason) {
+			     console.log(reason);
+			});
+	
+	}
 
 function parler() {
-       
-    TTS
-        .speak({
-            text: 'hello, world!',
-            locale: 'en-GB',
-            rate: 0.75
-        }, function () {
-            alert('success');
-        }, function (reason) {
-            alert(reason);
-        });
+	var word=document.getElementById("saisie");
+       blabla(word.value)
+	word.value="";
 }
- */
-
-//document.addEventListener('deviceready', parler(),false);
+/*
+//synthese vocale fonctionnelle uniquement sur ordi
 
 function parler(){
-	//alert("parler");
-	var word=document.getElementById("saisie");
+	alert("parler");
+	
 	var u = new SpeechSynthesisUtterance();
        var txt = "";
        txt = word.value;
        u.text = txt;
        u.lang = 'fr-FR';
        speechSynthesis.speak(u);
+	word.value="";
 }
+*/
