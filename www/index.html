@@ -8,7 +8,7 @@
 			<meta name="msapplication-tap-highlight" content="no">
 			<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
 			<link rel="stylesheet" type="text/css" href="css/index.css">
-			<title>Hello World</title>
+			<title>Calliope</title>
 			
 		</head>
 		
@@ -42,7 +42,7 @@
 					</div>
 					
 					<div id ="corps">
-						<div class="texte">
+						<div class="texte" style="display:none">
 							<p class="etape"><span>Etape 1:</span>Télechargez l'image qui vous convient. Elle doit être dans l'espace de stockage de votre tablette.</p>
 							<p class="etape"><span>Etape 2:</span>Cliquez sur "Choisissez votre fichier". Choisissez l'image pour le nouveau pictogramme.</p>
 							<p class="etape"><span>Etape 3:</span>Indiquez la catégorie ainsi que la signification du nouveau pictogramme </p>
@@ -58,8 +58,8 @@
 							</label>
 							<output id="list"></output>
 							<p>Catégorie du pictogramme: <input class="saisie" type="text" name="category"/>
-							Signification du pictogramme: <input class="saisie" type="text" name="pseudo"/></p>
-							<input class="submit" type="submit" name="upload">
+							Signification du pictogramme: <input id="signification"class="saisie" type="text" name="mot"/></p>
+							<input id="select_fichier" class="submit" type="submit" name="upload">
 							
 						</form>
 					</div>

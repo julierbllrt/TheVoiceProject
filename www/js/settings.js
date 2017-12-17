@@ -44,7 +44,7 @@ function writeLog(str) {
 		fileWriter.write(blob);
 	}, fail);
 	
-	alert(str+' enregistré');
+	//alert(str+' enregistré');
 }
 
 function readLog() {
@@ -53,13 +53,13 @@ function readLog() {
 
 		reader.onloadend = function(e) {
 			var res=this.result.split("\n");
-			alert(res);
+			//alert(res);
 			nom.value=res[0];
 			prenom.value=res[1];
 			//birthday.value=res[2];
 			tel.value=res[2];
 			des.value=res[3];
-			alert(this.result);
+			//alert(this.result);
 		};
 		reader.readAsText(file);
 	}, fail);

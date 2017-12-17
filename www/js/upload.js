@@ -1,6 +1,9 @@
 //document.addEventListener('deviceready', onDeviceReady, false);
 document.getElementById('files').addEventListener('change', handleFileSelect, false);
+document.getElementById('select_fichier').addEventListener('touchend',copier, false);
 var category;
+var fileOb;
+var newDirOb;
 
 function fail(e) {
 	console.log("FileSystem Error");
@@ -17,31 +20,25 @@ function handleFileSelect(evt) {
 	reader.onload = (function(theFile) {
 		return function(e) {
 			document.getElementById('list').innerHTML = ['<img src="', e.target.result,'" title="', theFile.name, '" />'].join('');
-			//console.log(e.target);
-			
-			
-			
 		};
 	})(f);
 	
+	
 	navigator.Env.getDirectory("Downloads", 
 		function (path) {
-			if (path) {
-				window.resolveLocalFileSystemURL("file:///storage/emulated/0/"+ path, function(dir) {
-					console.log("got main dir", dir);
-					dir.getFile(f.name, {create:false}, function(file) {
-						console.log(cordova.file.externalDataDirectory);
-						window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dirEntry) {
-							console.log(dirEntry);
-							file.copyTo(dirEntry);
-						}, fail);
-						console.log("got the file", file);
-						logOb = file;		
-						console.log('getfile');
+			window.resolveLocalFileSystemURL("file:///storage/emulated/0/"+ path, function(dir) {
+				console.log("got main dir", dir);
+				dir.getFile(f.name, {create:false}, function(file) {
+					fileOb=file;
+					console.log("got the file", file);
+					window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dirEntry) {
+						newDirOb=dirEntry
+						console.log(dirEntry);
+						alert(dirEntry.nativeURL+" dir");
 						
-					});
+					}, fail);
 				});
-			}
+			});
 		},
 		function (error) {
 			console.log("getDirectory error: " + error);
@@ -51,41 +48,21 @@ function handleFileSelect(evt) {
 	reader.readAsDataURL(f);
 	//console.log(f.toURL());
 }
-	
-	
-	
-function test(fichier) {
-	//var root = "/img/Personnes";//cordova.file.externalApplicationStorageDirectory
-	//alert(root);
-	//var parentName = root.substring(root.lastIndexOf('/')+1);
-	//alert(parentName);
-	//var parentEntry = new DirectoryEntry(parentName,root);
-	//alert(parentEntry);
-	fichier.CopyFile (navigator.Env.getDirectory("Downloads"), cordova.file.externalApplicationStorageDirectory);
-	alert("ENFINNNNNNNNNNNNNNN");
-}	    
 
-var txt = "";
-var image = "";/*
-$('.categorie').click(function(){
-	category = this.innerHTML;
-	$('.dispo').click(function(){
-		//document.location.href="upload.html";
-		sleep(2);
-		alert(category);
-		$('.valider').click(function(){
-			alert("autre chose");
-				var signification = document.getElementById("signification");
-				var fichier = document.getElementById("files");
-				txt = signification.value;
-				image = fichier.files[0];
-				var myObject, imagecopy;
-				myObject = new ActiveXObject("image.png");
-				imagecopy = myObject.file.copy("img/"+ this.innerHTML +"");
-			});           
-		});
-	});
-});*/
+function copier() {	
+	console.log(fileOb);
+	console.log(newDirOb);
+	console.log(document.getElementById("signification").value);
+
+	console.log(newDirOb);
+	alert(newDirOb.nativeURL+" dir");
+	fileOb.copyTo(newDirOb);
+	alert(fileOb.name+" copié");
+
+
+	alert('getfile');
+}
+
 
 
  // Insert DB
@@ -105,29 +82,5 @@ function sleep(seconds){
 	var waitUntil = new Date().getTime() + seconds*1000;
 	while (new Date().getTime() < waitUntil) true;
 }
-/*var category;
-$(document).ready(function(){
-	var txt = "";
-    var image = "";
-	$('.categorie').click(function(){
-		    category = this.innerHTML;
-            alert(category);
-		$('.dispo').click(function(){
-            alert(category);
-            document.location.href="upload.html";
-            sleep(2);
-            alert(category);
-            $('.valider').click(function(){
-            	    alert("autre chose");
-				    var signification = document.getElementById("signification");
-				    var fichier = document.getElementById("files");
-				    txt = signification.value;
-				    image = fichier.files[0];
-				    var myObject, imagecopy;
-				    myObject = new ActiveXObject("image.png");
-				    imagecopy = myObject.file.copy("img/"+ this.innerHTML +"");
-            });           
-        });
-	});
-});*/
+
 
