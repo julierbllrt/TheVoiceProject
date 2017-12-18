@@ -86,7 +86,7 @@ function goInsertPicto(picto, mot, personne, genre){
  
 
 function insertDbPicto(tx, picto, mot, personne, genre){
- 	tx.executeSql('INSERT INTO PICTOS(picto,mot,personne,genre) VALUES (?, ?, ?, ?)';, [picto, mot, personne, genre]);
+ 	tx.executeSql('INSERT INTO PICTOS(picto,mot,personne,genre) VALUES (?, ?, ?, ?)', [picto, mot, personne, genre]);
 }
 
 function goInsertVerbe(picto, mot, auxiliaire, participe, groupe, pres1, pres2, pres3, pres4, pres5, pres6, irrFutur){
@@ -95,7 +95,7 @@ function goInsertVerbe(picto, mot, auxiliaire, participe, groupe, pres1, pres2, 
 }
 
 function insertDbVerbe(tx, picto, mot, auxiliaire, participe, groupe, pres1, pres2, pres3, pres4, pres5, pres6, irrFutur){
- 	tx.executeSql('INSERT INTO VERBES(picto,mot,auxiliaire,participe,groupe,pres1,pres2,pres3,pres4,pres5,pres6,irrFutur) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';, [picto, mot, auxiliaire, participe, groupe, pres1, pres2, pres3, pres4, pres5, pres6, irrFutur]);
+ 	tx.executeSql('INSERT INTO VERBES(picto,mot,auxiliaire,participe,groupe,pres1,pres2,pres3,pres4,pres5,pres6,irrFutur) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )', [picto, mot, auxiliaire, participe, groupe, pres1, pres2, pres3, pres4, pres5, pres6, irrFutur]);
 }
 
 
