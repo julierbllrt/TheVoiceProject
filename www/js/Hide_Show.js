@@ -21,7 +21,7 @@ $(document).ready(function(){
 
  	$('#Favoris').click(function(){
 		$('#tablecate0').css("display", "none");
-		$('#tablefav').css("display", "table");
+		$('#tablefav0').css("display", "table");
 		$('#droite button').css("display", "none");
  		$('#droite img').css("display", "none");
 	});

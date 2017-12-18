@@ -12,6 +12,16 @@ function fail(e) {
 }
 
 function onDeviceReady(){
+	window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dir) {
+		console.log(dir.nativeURL);
+		console.log("got main dir", dir);
+		dir.getFile("fav.txt", {create:true, exclusive: false}, function(file) {
+			console.log("got the file", file);
+			favOb = file;		
+			console.log('getfile');
+			readLog();	
+		});
+	});
 	setApropos();
 	setFav();
 }
@@ -44,6 +54,10 @@ function queryDbClickPicto(tx, id) {
 function querySuccessClickPicto(tx, results) {
 	var txtPicto = " " + results.rows.item(0).mot;
 	document.getElementById("saisie").value += txtPicto;
+}
+
+function onClickPictoTxt(this.id){
+	
 }
 
 
@@ -257,11 +271,13 @@ function setFav(){
 		};
 		reader.readAsText(file);
 	}, fail);
+
 }
 
 
 function newFav(){
 	var toAdd = document.getElementById("saisie").value;
+	toAdd += "\n"
 	var favStr = "";
 	favOb.file(function(file) {
 		var reader = new FileReader();
@@ -272,14 +288,13 @@ function newFav(){
 		};
 		reader.readAsText(file);
 	}, fail);
-	favStr += toAdd
-
+	favStr += toAdd;
 
 	if(!favOb){
 		return;
 	} 
 	favOb.createWriter(function(fileWriter) {       
-		var blob = new Blob([str], {type:'text/plain'});
+		var blob = new Blob([favStr], {type:'text/plain'});
 		fileWriter.write(blob);
 	}, fail);
 }
