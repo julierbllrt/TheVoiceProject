@@ -1,6 +1,6 @@
 var nom =document.getElementById('nom');
 var prenom =document.getElementById('prenom');
-//var birthday = document.getElementById('birthday');
+var birthday = document.getElementById('birthday');
 var tel = document.getElementById('tel');
 var des = document.getElementById('description');
 var logOb;
@@ -10,9 +10,9 @@ i=0;
 document.addEventListener('deviceready', onDeviceReady, false);
 document.getElementById("set").addEventListener("touchend", function(){
 	i=0;
-	var  string = nom.value + "\n" + prenom.value + "\n" + tel.value + "\n" + des.value + "\n";
+	var  string = nom.value + "\n" + prenom.value + "\n"+ birthday.value + "\n" + tel.value + "\n" + des.value + "\n";
 	writeLog(string);
-	alert('Les nouvelles informations on été enregistré');
+	alert('Les nouvelles informations ont été enregistré');
 });
 
 function fail(e) {
@@ -56,9 +56,11 @@ function readLog() {
 			//alert(res);
 			nom.value=res[0];
 			prenom.value=res[1];
-			//birthday.value=res[2];
-			tel.value=res[2];
-			des.value=res[3];
+			var date=res[2].split("-");
+			alert(date);
+			birthday.value = date[0]+ "-"+date[1]+ "-"+date[2];
+			tel.value=res[3];
+			des.value=res[4];
 			//alert(this.result);
 		};
 		reader.readAsText(file);
