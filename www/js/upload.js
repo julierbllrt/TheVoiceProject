@@ -84,6 +84,7 @@ function goInsertPicto(picto, mot, personne, genre){
  	db.transaction(function(tx){insertDb(tx, picto, mot, personne, genre)}, errorCB);
 }
  
+
 function insertDbPicto(tx, picto, mot, personne, genre){
  	tx.executeSql('INSERT INTO PICTOS(picto,mot,personne,genre) VALUES (?, ?, ?, ?)';, [picto, mot, personne, genre]);
 }
@@ -104,6 +105,15 @@ function sleep(seconds){
 	while (new Date().getTime() < waitUntil) true;
 }
 
+=======
+
+/* ARCHIVE
+function sleep(seconds){
+	var waitUntil = new Date().getTime() + seconds*1000;
+	while (new Date().getTime() < waitUntil) true;
+}
+
+>>>>>>> ed453f44d6d20093186de006c8a34be47c1f3f1f
 //document.addEventListener('deviceready', onDeviceReady, false);
 //document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
