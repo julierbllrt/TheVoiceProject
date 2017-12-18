@@ -26,10 +26,18 @@ function onClickPicto(elmnt) {
 }
 
 function queryDbClickPicto(tx, id) {
-	var q = 'SELECT * FROM PICTOS WHERE id LIKE ? ';
+	var q = "";
 	var button = document.getElementById(id);
+ 	var catElement = button.firstElementChild;
+	var category = catElement.className;
 	var imgElement = button.getElementsByTagName('img');
 	var imgSrc = imgElement[0].id;
+	if (category == "Verbes"){
+		q += 'SELECT * FROM VERBES WHERE id LIKE ? ';
+	}
+	else {
+		q += 'SELECT * FROM PICTOS WHERE id LIKE ? ';
+	}
 	tx.executeSql(q, [imgSrc], querySuccessClickPicto, errorCB);
 }
 
@@ -53,7 +61,13 @@ function onClickCategory(category){
  
  function queryDbClickCategory(tx, category){
  	//alert("going querydb");
- 	var q = 'SELECT * FROM PICTOS WHERE picto LIKE ?';
+ 	var q = "";
+ 	if (category == "Verbes"){
+ 		q += 'SELECT * FROM VERBES WHERE picto LIKE ?';
+ 	}
+ 	else{
+ 		q += 'SELECT * FROM PICTOS WHERE picto LIKE ?';
+ 	}
  	tx.executeSql(q, ['img/'+category+'/%'], function(tx, results){querySuccessClickCategory(tx, results, category)}, errorCB);
  }
  
@@ -247,7 +261,7 @@ function setFav(){
 
 
 function newFav(){
-	var toAdd = document.getElementById()
+	var toAdd = document.getElementById();
 
 
 	if(!favOb){
