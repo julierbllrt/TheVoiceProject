@@ -314,4 +314,35 @@ label{
 	display: block;
 }
 
+#tableapropos{
+	#border: 1px solid LightGrey;
+	#border-spacing: 35px  ;
+	width:75%;
+	table-layout:fixed;
+	display:none;
+}
+
+#tablefav0{
+	#border: 1px solid LightGrey;
+	#border-spacing: 35px  ;
+	width:75%;
+	table-layout:fixed;
+	display:none;
+}
+
+#tablefav1{
+	#border: 1px solid LightGrey;
+	#border-spacing: 35px  ;
+	width:75%;
+	table-layout:fixed;
+	display:none;
+}
+
+#tablefav2{
+	#border: 1px solid LightGrey;
+	#border-spacing: 35px  ;
+	width:75%;
+	table-layout:fixed;
+	display:none;
+}
 

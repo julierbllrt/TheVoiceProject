@@ -1,7 +1,13 @@
+var favOb;
+
 function errorCB(err) {
  	alert("Error processing SQL: "+err.code);
  }
 
+function fail(e) {
+	console.log("FileSystem Error");
+	console.log(e);
+}
 
 
 
@@ -23,7 +29,6 @@ function queryDbClickPicto(tx, id) {
 
 function querySuccessClickPicto(tx, results) {
 	var txtPicto = " " + results.rows.item(0).mot;
-	blabla(txtPicto);
 	document.getElementById("saisie").value += txtPicto;
 }
 
@@ -68,7 +73,7 @@ function onClickCategory(category){
 					actualbutton.setAttribute('onclick', 'goDelete(this.id)');
 				}
 			}
- 		imgPicto +='<div class="'+ category +'" id="test'+k+'"><img id="' + results.rows.item(k).id + '" class="picto" src="' + results.rows.item(k).picto + '"><p class="mot">' + results.rows.item(k).mot + '</p>'+'<img class="cross" src="icon/delete.png">'+'</div>';
+ 		imgPicto +='<div class="'+ category +'" id="test'+k+'"><img id="' + results.rows.item(k).id + '" class="picto" src="' + results.rows.item(k).picto + '"><p class="mot">' + results.rows.item(k).mot + '</p>'+'<img class="cross" src="img/croix png projet.png">'+'</div>';
  		actualbutton.innerHTML = imgPicto;
  		imgPicto="";
 
@@ -76,7 +81,7 @@ function onClickCategory(category){
 	for(var j = len; j < 36; j++){
 		var actualbutton = document.getElementById("picto"+j);
 		if(!actualbutton.hasAttribute('class')){
-			actualbutton.setAttribute('onclick','dispoPicto()');
+			actualbutton.removeAttribute('onclick');
 			actualbutton.setAttribute('class', 'dispo');
 		}
  	}
@@ -150,12 +155,85 @@ function stopdeletemode(){
 	});
 
 
- // Défilement
- //
+// Click A propos
+//
 
- /*function defilement(){
- 	while (var i < 2){
+function onClickApropos(){
+	var txtPicto = "";
+	var nom = document.getElementById('nom');
+	var prenom = document.getElementById('prenom');
+	var birthday = document.getElementById('birthday');
+	var tel = document.getElementById('tel');
+	var des = document.getElementById('description');
+
+	if(nom.value!=undefined && prenom.value!=undefined){
+		txtPicto += "Je m'appelle " + prenom.value + " " + nom.value;
+		document.getElementById('apropos0').innerHTML = '<p>' + txtPicto + '</p>';
+		txtPicto = "";
+	}
+
+	if(birthday.value!=undefined){
+		txtPicto += "J'ai ";
+		document.getElementById('apropos1').innerHTML = '<p>' + txtPicto + '</p>';
+		txtPicto = "";
+	}
+
+	if (tel!=undefined){
+		txtPicto += "Mon numéro de téléphone est le " + tel.value;
+		document.getElementById('apropos2').innerHTML = '<p>' + txtPicto + '</p>';
+		txtPicto = "";
+	}
+
+}
+
+function CalculAge(birthday) {
+    var td=new Date();
+    var dtn=birthday;
+    var an=dtn.substr(6,4);
+    var mois=dtn.substr(3,2);
+    var day= dtn.substr(0,2);
+    var age=td.getFullYear()-an;
+ 
+    var mMois=td.getMonth()-mois+1;
+ 
+     
+    if(mMois < 0)
+    {
+        age=age-1;
+    }  
+    else
+    {
+        if(mMois == 0)
+        {
+            var mDate=td.getDay()-day+1;
+            if(mDate < 0)
+            {
+                age=age-1;
+            }
+             
+        }
+    }
+    return age;
+}
 
 
- 	}
- }*/
+
+// Click Favoris
+//
+
+function setFav(){
+	favOb.file(function(file) {
+		var reader = new FileReader();
+		var txtPicto = "";
+
+		reader.onloadend = function(e) {
+			var res=this.result.split("\n");
+			for (var i=0; i<res.length; i++){
+				txtPicto += '<p>'+res[i]+'</p>';
+				document.getElementById("fav"+i).innerHTML = txtPicto;
+				txtPicto = "";
+			}
+		};
+		reader.readAsText(file);
+	}, fail);
+}
