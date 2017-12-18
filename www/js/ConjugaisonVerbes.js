@@ -12,14 +12,7 @@ var terminaisons3emeGroupe = ["s","s","t","ons","ez","ent"];
 
 var terminaisonsFutur = ["ai","as","a","ons","ez","ent"];
 
-// Déclaration de l'objet Personne par constructeur
-function Sujet(mot, genre, nombre, personne){
-	this.mot = mot; //	string
-	this.genre = genre; // bool (0 -> masculin, 1 -> féminin)
-	this.nombre = nombre; // bool (0 -> singulier, 1 -> pluriel)
-	this.personne = personne; // 1 ≤ personne ≤ 6
-	};
-}
+
 
 recupSujetFromDB = function(tx, results){	// à implementer avec la DB
 		var leMot=results.rows.item(0).mot;
@@ -69,14 +62,6 @@ recupSujetFromDB = function(tx, results){	// à implementer avec la DB
 		return(leSujet);
 
 
-// définition d'un objet Verbe par constructeur
-function Verbe(infinitif, auxiliaire, participePasse, groupe, isIrregular, irregularPresent, irregularFutur) {
-    this.infinitif =infinitif;	//string
-    this.participePasse = participePasse;	//string
-    this.groupe = groupe;	// int
-    this.irregularPresent = irregularPresent; // Liste de longueur 6
-    this.irregularFutur = irregularFutur; // String
-}
 
 recupVerbeFromDB = function(tx, results){
 	if(var results.rows.item(0).picto.find("Verbes")!=-1){
