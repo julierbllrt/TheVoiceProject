@@ -1,3 +1,5 @@
+document.addEventListener('deviceready', onDeviceReady, false);
+
 var favOb;
 
 function errorCB(err) {
@@ -9,6 +11,10 @@ function fail(e) {
 	console.log(e);
 }
 
+function onDeviceReady(){
+	setApropos();
+	setFav();
+}
 
 
 // Click Picto
@@ -155,10 +161,10 @@ function stopdeletemode(){
 	});
 
 
-// Click A propos
+// Set A propos
 //
 
-function onClickApropos(){
+function setApropos(){
 	var txtPicto = "";
 	var nom = document.getElementById('nom');
 	var prenom = document.getElementById('prenom');
@@ -218,7 +224,7 @@ function CalculAge(birthday) {
 
 
 
-// Click Favoris
+//  Favoris
 //
 
 function setFav(){
@@ -229,11 +235,26 @@ function setFav(){
 		reader.onloadend = function(e) {
 			var res=this.result.split("\n");
 			for (var i=0; i<res.length; i++){
+				var favToSet = document.getElementById("fav"+i); 
 				txtPicto += '<p>'+res[i]+'</p>';
-				document.getElementById("fav"+i).innerHTML = txtPicto;
+				favToSet.innerHTML = txtPicto;
 				txtPicto = "";
 			}
 		};
 		reader.readAsText(file);
+	}, fail);
+}
+
+
+function newFav(){
+	var toAdd = document.getElementById()
+
+
+	if(!favOb){
+		return;
+	} 
+	favOb.createWriter(function(fileWriter) {       
+		var blob = new Blob([str], {type:'text/plain'});
+		fileWriter.write(blob);
 	}, fail);
 }
