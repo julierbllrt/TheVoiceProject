@@ -1,6 +1,6 @@
-//document.addEventListener('deviceready', onDeviceReady, false);
-document.getElementById('files').addEventListener('change', handleFileSelect, false);
-document.getElementById('select_fichier').addEventListener('touchend',copier, false);
+
+document.getElementById('select_fichier').addEventListener('touchend',copier, fail);
+document.getElementById('test').addEventListener('touchend',pick, false);
 var category;
 var fileOb;
 var newDirOb;
@@ -12,30 +12,26 @@ function fail(e) {
 	console.log("//////////////////////////////////////////");
 }
 
-function handleFileSelect(evt) {
-	var files = evt.target.files;
-	console.log(files);
-	var f = files[0];
-	console.log(f);
-	console.log(f.name);
-	var reader = new FileReader();
-	console.log(f);
-	reader.onload = (function(theFile) {
-		return function(e) {
-			document.getElementById('list').innerHTML = ['<img src="', e.target.result,'" title="', theFile.name, '" />'].join('');
-		};
-	})(f);
-	console.log("//////////////////////////////////////////");
-	
-	
-	
-	
-	navigator.Env.getDirectory("Downloads", 
-		function (path) {
-			window.resolveLocalFileSystemURL("file:///storage/emulated/0/"+ path, function(dir) {
+function pick() {
+	alert("fuck1");
+	window.OurCodeWorld.Filebrowser.filePicker.single({
+		success: function(data){
+			if(!data.length){
+				// No file selected
+				return;
+			}
+
+			console.log(data);
+			pathToFile=data[0];
+			document.getElementById('list').innerHTML = ['<img src="', pathToFile,'"/>'].join('');
+			index=pathToFile.lastIndexOf('/');
+			pathToDir=pathToFile.substring(0,index);
+			fileName=pathToFile.substring(index+1);
+			
+			window.resolveLocalFileSystemURL(pathToDir, function(dir) {
 				console.log("got main dir", dir);
 				oldDirOb=dir;
-				dir.getFile(f.name, {create:false}, function(file) {
+				dir.getFile(fileName, {create:false}, function(file) {
 					fileOb=file;
 					console.log("got the file", file);
 					window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dirEntry) {
@@ -45,15 +41,14 @@ function handleFileSelect(evt) {
 					}, fail);
 				});
 			});
-			
+		
 		},
-		function (error) {
-			console.log("getDirectory error: " + error);
+		error: function(err){
+			console.log(err);
 		}
-	);
-
-	reader.readAsDataURL(f);
-	//console.log(f.toURL());
+	});
+	alert("fuck2");
+	
 	
 }
 
@@ -101,3 +96,48 @@ function sleep(seconds){
 }
 
 
+/* ARCHIVE
+
+//document.addEventListener('deviceready', onDeviceReady, false);
+//document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+function handleFileSelect(evt) {
+	var files = evt.target.files;
+	var f = files[0];
+	var reader = new FileReader();
+	reader.onload = (function(theFile) {
+		return function(e) {
+			document.getElementById('list').innerHTML = ['<img src="', e.target.result,'" title="', theFile.name, '" />'].join('');
+		};
+	})(f);
+	console.log("//////////////////////////////////////////");
+	
+	
+	
+	navigator.Env.getDirectory("Downloads", 
+		function (path) {
+			window.resolveLocalFileSystemURL("file:///storage/emulated/0/"+ path, function(dir) {
+				console.log("got main dir", dir);
+				oldDirOb=dir;
+				dir.getFile(f.name, {create:false}, function(file) {
+					fileOb=file;
+					console.log("got the file", file);
+					window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dirEntry) {
+						newDirOb=dirEntry
+						console.log(dirEntry);
+						console.log("//////////////////////////////////////////");
+					}, fail);
+				});
+			});
+			
+		},
+		function (error) {
+			console.log("getDirectory error: " + error);
+		}
+	);
+
+	reader.readAsDataURL(f);
+	//console.log(f.toURL());
+	
+}
+*/
