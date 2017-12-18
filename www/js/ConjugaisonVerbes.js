@@ -12,14 +12,7 @@ var terminaisons3emeGroupe = ["s","s","t","ons","ez","ent"];
 
 var terminaisonsFutur = ["ai","as","a","ons","ez","ent"];
 
-// Déclaration de l'objet Personne par constructeur
-function Sujet(mot, genre, nombre, personne){
-	this.mot = mot; //	string
-	this.genre = genre; // bool (0 -> masculin, 1 -> féminin)
-	this.nombre = nombre; // bool (0 -> singulier, 1 -> pluriel)
-	this.personne = personne; // 1 ≤ personne ≤ 6
-	};
-}
+
 
 recupSujetFromDB = function(tx, results){	// à implementer avec la DB
 		var leMot=results.rows.item(0).mot;
@@ -42,7 +35,7 @@ recupSujetFromDB = function(tx, results){	// à implementer avec la DB
 				break;
 			case "elle":
 				laPersonne=3;
-				leGenre = true;
+				leGenre = 1;
 				break;
 			case "nous":
 				laPersonne=4;
@@ -57,7 +50,7 @@ recupSujetFromDB = function(tx, results){	// à implementer avec la DB
 				
 				break;
 			case "elles":
-				leGenre = true;
+				leGenre = 1;
 				
 				laPersonne=6;
 				break;
@@ -69,45 +62,48 @@ recupSujetFromDB = function(tx, results){	// à implementer avec la DB
 		return(leSujet);
 
 
-// définition d'un objet Verbe par constructeur
-function Verbe(infinitif, auxiliaire, participePasse, groupe, isIrregular, irregularPresent, irregularFutur) {
-    this.infinitif =infinitif;	//string
-    this.participePasse = participePasse;	//string
-    this.groupe = groupe;	// int
-    this.irregularPresent = irregularPresent; // Liste de longueur 6
-    this.irregularFutur = irregularFutur; // String
-}
 
-recupVerbeFromDB = function(tx, results){	
-		var lInfinitif;
-		var leParticipePasse =;
-		var leGroupe = false;
-		var leIrregular = false;
-		var leIrregularPresent = false;
-		var leIrregularFutur = false;
-		
+recupVerbeFromDB = function(tx, results){
+	if(var results.rows.item(0).picto.find("Verbes")!=-1){
+
+		// si c'est un verbe
+		var lInfinitif = results.rows.item(0).mot;
+		var leParticipePasse =results.rows.item(0).participe;
+		var lAuxiliaire = results.rows.item(0).auxiliaire;
+		var leGroupe = results.rows.item(0).groupe;
+		var lePres1 = results.rows.item(0).pres1;
+		var lePres2 = results.rows.item(0).pres2;
+		var lePres3 = results.rows.item(0).pres3;
+		var lePres4 = results.rows.item(0).pres4;
+		var lePres5 = results.rows.item(0).pres5;
+		var lePres6 = results.rows.item(0).pres6;
+		var leIrregularFutur = results.rows.item(0).irrFutur;
+
 		var leVerbe = {infinitif:lInfinitif,
 						auxiliaire:lAuxiliaire,
 						participePasse:leParticipePasse,
 						groupe:leGroupe,
-						isIrregular:leIrregular,
-						irregularPresent:leIrregularPresent,
-						irregularFutur=leIrregularFutur};
-		return(leVerbe);
-		}
+						pres1: lePres1,
+						pres2: lePres2,
+						pres3: lePres3,
+						pres4: lePres4,
+						pres5: lePres5,
+						pres6: lePres6,
+						irregularFuturfutur: leIrregularFutur
+						};
 		
-
+	}
+	return(leVerbe);	
+}
 // Conjugaison des verbes au présent
 function conjugaisonPresent(verbe, sujet){
 	var resultat = "";
 	var inf= verbe.infinitif;
 	inf.toLowerCase();
-	
-
-	
-
+	var irregularPresent[verbe.pres1,verbe.pres2,verbe.pres3,verbe.pres4,verbe.pres5,verbe.pres6];
+		
+	if(verbe.pres1!=null){
 		switch(verbe.groupe){
-
 		
 		case 1: // conjugaison des verbes du 1er groupe
 
@@ -179,44 +175,28 @@ function conjugaisonPresent(verbe, sujet){
 
 		case 3: // conjugaison du 3e groupe
 
-			var radical3 = inf.substr(inf.length - 3); // récupération du radical de l'infinitif (les 3 derniers caractères)
+			var radical3 = inf.substr(inf.length - 3); 
 
-			if (radical3.includes('dre')){
-				if(!isIrregular){
+			if (radical3.includes('dre')){ // cas des verbes en -dre
+				
 				inf = inf.substr(0, inf.length - 3);	// suppression du radical en -dre
 				resultat = inf + terminaisons3emeGroupe_endre[sujet.personne-1]; // rajout de la terminaison pour la personne spécifiée
-				}
-				else{
-					if(sujet.personne==4 || sujet.personne==5){
-					resultat = verbe.irregularPresent[1]+terminaisons3emeGroupe_dre;
-					}
-					else{
-						resultat = verbe.irregularPresent[0]+terminaisons3emeGroupe_dre;
-					}
-				}
 				break;
 			}
 
 			var radical4 = inf.substr(inf.length - 2);
-			if (radical4.includes('ir')){
-				if(!isIrregular){
+			if (radical4.includes('ir')){	// cas des verbes en -ir
+				
 				inf = inf.substr(0, inf.length - 3);	// suppression du radical en -ir
 				resultat = inf + terminaisons1erGroupe[sujet.personne-1]; // rajout de la terminaison pour la personne spécifiée
-				}
-				else{
-					if(sujet.personne==4 || sujet.personne==5){
-					resultat = verbe.irregularPresent[1]+terminaisons3emeGroupe;
-					}
-					else{
-						resultat = verbe.irregularPresent[0]+terminaisons3emeGroupe;
-					}
-				}
 				break;
 			}
-			
 
-		
-		
+		}		
+
+	}
+	else{
+		resultat = irregularPresent[sujet.personne-1];
 	}
 	
 	return resultat;
@@ -230,7 +210,7 @@ function conjugaisonverbeFutur(verbe, sujet){
 	inf.toLowerCase();
 
 
-	if(!verbe.isIrregular){ // si le verbe est régulier
+	if(verbe.irregularFutur!=null){ // si le verbe est régulier
 		
 		switch(verbe.groupe){
 
@@ -282,7 +262,7 @@ function conjugaisonverbeFutur(verbe, sujet){
 
 function ConjugaisonPasse(verbe, sujet){
 	var avoir = ["ai","as","a","avons","avez","ont"];
-	var etre = ["suis","es","est","sommes","êtes","sont"]; // Oui, c'est de la triche, parceque flemme de faire un truc mieux...
+	var etre = ["suis","es","est","sommes","êtes","sont"]; 
 
 	var participe = verbe.participePasse;
 	var resultat = "";
@@ -298,7 +278,7 @@ function ConjugaisonPasse(verbe, sujet){
 		case "être":
 			aux = etre[sujet.personne-1];
 			if(substr(participe.length - 2)=='us'){ // cas où le participe passé finit en -us
-				if(sujet.genre){
+				if(sujet.genre==1){
 					participe = participe.substr(0, participe.length - 1); //	suppression du 's' pour mettre un 't' à la place
 					participe = participe+'t';
 					if (sujet.personne<4){
@@ -310,7 +290,7 @@ function ConjugaisonPasse(verbe, sujet){
 				}
 			}
 			else{
-				if (!sujet.genre){
+				if (sujet.genre==0){
 					if(sujet.personne>3 && substr(participe.length - 1)!='s'){
 					participe = participe+'s';
 					}
