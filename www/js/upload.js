@@ -13,7 +13,6 @@ function fail(e) {
 }
 
 function pick() {
-	alert("fuck1");
 	window.OurCodeWorld.Filebrowser.filePicker.single({
 		success: function(data){
 			if(!data.length){
@@ -21,7 +20,7 @@ function pick() {
 				return;
 			}
 
-			console.log(data);
+			//console.log(data);
 			pathToFile=data[0];
 			document.getElementById('list').innerHTML = ['<img src="', pathToFile,'"/>'].join('');
 			index=pathToFile.lastIndexOf('/');
@@ -29,16 +28,12 @@ function pick() {
 			fileName=pathToFile.substring(index+1);
 			
 			window.resolveLocalFileSystemURL(pathToDir, function(dir) {
-				console.log("got main dir", dir);
+				//console.log("got main dir", dir);
 				oldDirOb=dir;
 				dir.getFile(fileName, {create:false}, function(file) {
 					fileOb=file;
-					console.log("got the file", file);
-					window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dirEntry) {
-						newDirOb=dirEntry
-						console.log(dirEntry);
-						console.log("//////////////////////////////////////////");
-					}, fail);
+					//console.log("got the file", file);
+					
 				});
 			});
 		
@@ -46,31 +41,35 @@ function pick() {
 		error: function(err){
 			console.log(err);
 		}
-	});
-	alert("fuck2");
-	
+	});	
 	
 }
 
 function copier() {	
 	var newName = document.getElementById("signification").value+".png";
-	console.log(newName);
-	console.log("fichier selectionné:",fileOb);
-	console.log("dossier d'origine:",oldDirOb);
-	console.log("dossier destinataire:",newDirOb);
+	var cate = document.getElementById("new_cate").value;
+	//alert(cate);
+	//console.log(newName);
+	//console.log("fichier selectionné:",fileOb);
+	//console.log("dossier d'origine:",oldDirOb);
 	
-	fileOb.moveTo(newDirOb, newName);
-	alert(fileOb.name+" renommer");
+	window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dirEntry) {
+		//alert(cordova.file.externalDataDirectory+cate);
+		dirEntry.getDirectory(cate, {create:true},function(dir){
+			console.log("dossier selec:",dir);
+			newDirOb=dir;
+			console.log(dir);
+			fileOb.moveTo(newDirOb, newName);
+			//alert(fileOb.name+" renommer");
+			console.log("//////////////////////////////////////////");
+		});		
+	}, fail);
 	
-	newDirOb.getFile(newName, {create:false}, function(file) {
-		fileOb=file;
-		alert(file.name+" nouveau nom");
-	});
-	
-	alert(fileOb.name+" copié");
+	//alert(fileOb.name+" copié");
 	console.log(fileOb);
+
 	
-	alert('getfile');
+	//alert('getfile');
 }
 
 
@@ -86,17 +85,16 @@ function goInsert(picto, mot){
 }
  
 function insertDb(tx, picto, mot){
- 	tx.executeSql('INSERT INTO PICTOS(picto,mot) VALUES(?,?)', [picto, mot], onClick);
+ 	tx.executeSql('INSERT INTO PICTOS(picto,mot) VALUES(?,?)', [picto, mot]);
 }
 
 
+
+/* ARCHIVE
 function sleep(seconds){
 	var waitUntil = new Date().getTime() + seconds*1000;
 	while (new Date().getTime() < waitUntil) true;
 }
-
-
-/* ARCHIVE
 
 //document.addEventListener('deviceready', onDeviceReady, false);
 //document.getElementById('files').addEventListener('change', handleFileSelect, false);
