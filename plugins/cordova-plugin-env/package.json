@@ -1,0 +1,75 @@
+{
+  "_from": "cordova-plugin-env@^1.0.0",
+  "_id": "cordova-plugin-env@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-fk/AOcOl0ryLV4RjtYTovHXAbiw=",
+  "_location": "/cordova-plugin-env",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "cordova-plugin-env@^1.0.0",
+    "name": "cordova-plugin-env",
+    "escapedName": "cordova-plugin-env",
+    "rawSpec": "^1.0.0",
+    "saveSpec": null,
+    "fetchSpec": "^1.0.0"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-env/-/cordova-plugin-env-1.0.0.tgz",
+  "_shasum": "7e4fc039c3a5d2bc8b578463b584e8bc75c06e2c",
+  "_spec": "cordova-plugin-env@^1.0.0",
+  "_where": "/Users/Nico_ISEN/Documents/Cours ISEN - M1/Semestre 1/Projet Semestre 1 - The Voice Project/TheVoiceProject",
+  "author": {
+    "name": "Erik Brommers"
+  },
+  "bugs": {
+    "url": "https://github.com/adapt-it/cordova-env/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-env",
+    "platforms": [
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova Environment plugin",
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  },
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "engines": {
+    "cordovaDependencies": {
+      "2.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "homepage": "https://github.com/adapt-it/cordova-env",
+  "keywords": [
+    "cordova",
+    "ecosystem:cordova",
+    "cordova-android",
+    "plugin",
+    "environment"
+  ],
+  "license": "Apache-2.0",
+  "main": "env.js",
+  "name": "cordova-plugin-env",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adapt-it/cordova-env.git"
+  },
+  "scripts": {
+    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests",
+    "test": "npm run jshint"
+  },
+  "version": "1.0.0"
+}

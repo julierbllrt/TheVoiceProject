@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html>
+		<head>
+			
+			<!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+			--><meta name="format-detection" content="telephone=no">
+			<meta name="msapplication-tap-highlight" content="no">
+			<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+			<link rel="stylesheet" type="text/css" href="css/index.css">
+			<title>Calliope</title>
+			
+		</head>
+		
+		
+		<body>
+			<section id="page">
+			
+				<div class ="icon">
+					<div> 
+						<button id="home"><img src="icon/home.png" ></button>
+					</div>
+
+					<div>
+						<button id="deletemode" onclick="godeletemode()">GO DELETE</button>
+					</div>
+
+					<div>
+						<a href="settings.html"><button> <img src="icon/settings.png"> </button></a>
+					</div>
+				</div>
+			
+				<form id="form_saisie" action="">
+					<input id="saisie" type="text" name="Saisie" value="" >
+					<input id="submit" type="button" value="OK" onclick="parler()">
+				</form>
+				
+				<div id="divpicto">
+				
+					<div class="fleche" id ="gauche">
+						<button> <img src="icon/left.png"> </button>
+					</div>
+					
+					<div id ="corps">
+						<div class="texte" style="display:none">
+							<p class="etape"><span>Etape 1:</span>Télechargez l'image qui vous convient. Elle doit être dans l'espace de stockage de votre tablette.</p>
+							<p class="etape"><span>Etape 2:</span>Cliquez sur "Choisissez votre fichier". Choisissez l'image pour le nouveau pictogramme.</p>
+							<p class="etape"><span>Etape 3:</span>Indiquez la catégorie ainsi que la signification du nouveau pictogramme </p>
+							<p class="etape"><span>Etape 4:</span>Cliquez sur "Valider" pour finaliser.</p>
+						</div>
+						
+						
+						<form id="ajout_fichier">
+							<button type="button" id="test">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" ><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+								Choisir un fichier...
+							</button>
+							
+							<output id="list"></output>
+							<p>Catégorie du pictogramme: <input class="saisie" type="text" name="category"/>
+							Signification du pictogramme: <input id="signification"class="saisie" type="text" name="mot"/></p>
+							<input id="select_fichier" class="submit" type="submit" name="upload">
+							
+							
+						</form>
+						
+					</div>
+					
+					<table id="tablecate0">
+						<tr>
+							<th ><button class="categorie" id ="Personnes"onclick="onClickCategory(this.id)">Personnes</button></th>
+							<th ><button class="categorie" id ="Verbes" onclick="onClickCategory(this.id)">Verbes</button></th> 
+							<th ><button class="categorie" id="Adjectifs" onclick="onClickCategory(this.id)">Adjectifs</button></th>
+						</tr>
+						
+						<tr>
+							<th ><button class="categorie" id ="Favoris" onclick="onClickCategory(this.id)">Favoris</button></th>
+							<th ><button class="categorie" id="a_propos"onclick="onClickCategory(this.id)">A propos</button></th>
+							<th ><button class="categorie" id ="sos" onclick="onClickCategory(this.id)">SOS</button></th>
+						</tr>
+					</table>
+					
+					<table id="tablecate1">
+						<tr>
+							<th ><button class="categorie" id ="Nourriture" onclick="onClickCategory(this.id)">Nourriture</button></th>
+							<th ><button class="categorie" id ="Quotidien"onclick="onClickCategory(this.id)">Quotidien</button></th> 
+							<th ><button class="categorie" id ="Ressenti"onclick="onClickCategory(this.id)">Ressenti</button></th>
+						</tr>
+						
+						<tr>
+							<th ><button class="categorie" id="Chiffres & Nombres" onclick="onClickCategory(this.id)">Chiffres et Nombres</button></th>
+							<th ><button class="categorie" id="Santé" onclick="onClickCategory(this.id)">Santé</button></th>
+							<th ><button class="categorie" id="Sport & Loisirs" onclick="onClickCategory(this.id)">Sports et Loisirs</button></th>
+						</tr>
+					</table>
+					
+					<table id="tablecate2">
+						<tr>
+							<th ><button class="categorie" id="Adverbes" onclick="onClickCategory(this.id)">Adverbes</button></th>
+							<th ><a href="upload.html"><button class="categorie">+</button></a></th>
+							<th ><a href="upload.html"><button class="categorie">+</button></a></th>
+						</tr>
+						
+						<tr>
+							<th ><a href="upload.html"><button class="categorie">+</button></a></th>
+							<th ><a href="upload.html"><button class="categorie">+</button></a></th>
+							<th ><a href="upload.html"><button class="categorie">+</button></a></th>
+						</tr>
+					</table>
+					
+					
+					<table id="tablepicto0">
+						
+						<tr>
+							<td><button id="picto0" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto1" onclick="onClickPicto(this.id)"></button></td> 
+							<td><button id="picto2" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto3" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto4" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto5" onclick="onClickPicto(this.id)"></button></td>
+					
+
+						</tr>
+						<tr>
+							<td><button id="picto6" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto7" onclick="onClickPicto(this.id)"></button></td> 
+							<td><button id="picto8" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto9" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto10" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto11" onclick="onClickPicto(this.id)"></button></td>
+
+
+						</tr>
+						
+					</table>
+					
+					<table id="tablepicto1">
+					
+						<tr>
+							<td><button id="picto12" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto13" onclick="onClickPicto(this.id)"></button></td> 
+							<td><button id="picto14" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto15" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto16" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto17" onclick="onClickPicto(this.id)"></button></td>
+
+						</tr>
+						
+						<tr>
+							<td><button id="picto18" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto19" onclick="onClickPicto(this.id)"></button></td> 
+							<td><button id="picto20" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto21" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto22" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto23" onclick="onClickPicto(this.id)"></button></td>
+					
+
+						</tr>
+						
+					</table>
+					
+					<table id="tablepicto2">
+						
+						<tr>
+							<td><button id="picto24" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto25" onclick="onClickPicto(this.id)"></button></td> 
+							<td><button id="picto26" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto27" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto28" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto29" onclick="onClickPicto(this.id)"></button></td>
+					
+
+						</tr>
+						<tr>
+							<td><button id="picto30" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto31" onclick="onClickPicto(this.id)"></button></td> 
+							<td><button id="picto32" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto33" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto34" onclick="onClickPicto(this.id)"></button></td>
+							<td><button id="picto35" onclick="onClickPicto(this.id)"></button></td>
+
+
+						</tr>
+					
+					</table>
+					
+					<div class="fleche" id="droite">
+						<button> <img src="icon/right.png"> </button>
+					</div>
+					
+				</div>
+				
+				
+			</section>
+
+			<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+			<script type="text/javascript" src="cordova.js"></script>
+			<script type="text/javascript" src="js/Hide_Show.js"></script>
+			<script type="text/javascript" src="js/dbStart.js"></script>
+			
+			<script type="text/javascript" src="js/main.js"></script>
+			<script type="text/javascript" src="js/upload.js"></script>
+			<script type="text/javascript" src="js/speech.js"></script>
+			<script type="text/javascript" src="js/index.js"></script>
+			
+			
+	    </body>
+</html>

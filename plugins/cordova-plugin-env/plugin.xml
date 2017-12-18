@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-env" 
+        version="1.0" 
+        xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+        xmlns:rim="http://www.blackberry.com/ns/widgets"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>Environment</name>
+    <description>Cordova Environment Plugin</description>
+    <author>Erik Brommers</author>
+    <license>Apache 2.0 License</license>
+    <keywords>cordova,environment</keywords>
+    <repo>https://github.com/adapt-it/cordova-env.git</repo>
+    <issue>https://github.com/adapt-it/cordova-env/issues</issue>
+    <!-- expose our API under navigator.Env -->
+    <js-module name="env" src="www/env.js">
+        <clobbers target="navigator.Env" />
+    </js-module>
+    
+    <!-- android -->
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Env">
+                <param name="android-package" value="org.adaptit.cordova.environment.Env"/>
+            </feature>
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        </config-file>        
+        
+        <source-file src="src/android/Env.java" target-dir="src/org/adaptit/cordova/Env" />
+        
+     </platform>          
+</plugin>

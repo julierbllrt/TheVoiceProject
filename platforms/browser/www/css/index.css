@@ -1,0 +1,317 @@
+
+body {
+       background-color: WhiteSmoke;
+       font-size:1em;
+       height:100%;
+	padding-left:1%;
+	
+       margin:0px;
+       width:100%;
+}
+
+
+#page{
+	border: 1px solid LightGrey;
+	border-radius: 5px 5px 5px 5px;
+	position:fixed;
+	top:10px;
+	min-height: calc(100vh - 20px);
+	
+	width:98%;
+	background-color:White;
+	
+	display:flex;
+	flex-direction:column;
+	justify-content:space-around;
+	align-items:center;
+	
+}
+
+#corps{
+	display:none;
+	#flex-direction:row;
+	#justify-content:space-around;
+	#align-items:center;
+}
+
+.icon{
+	width:98%;
+	
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+}
+
+.icon button img{
+	margin-top:5px;
+	width:60px;
+}
+
+.icon button{
+	background-color: White;
+	border: none;
+}
+
+.texte{
+	display:block;
+	font-size:1.5em;
+}
+
+#ajout_fichier{
+	#background-color:yellow;
+	border:1px solid Grey;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	padding:10px;
+	
+	width:75%;
+}
+
+.saisie{
+	border: 1px solid Grey;
+	border-radius: 5px 5px 5px 5px;
+	font-size:1em;
+	width:100%;
+	height:100%;
+}
+
+.submit{
+	font-size:1em;
+	border: 1px solid Grey;
+	border-radius: 5px 5px 5px 5px;
+	height:30px;
+	background-color: WhiteSmoke;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+	font-size:1.5em;
+}
+
+.inputfile + label {
+    cursor: pointer; 
+}
+
+img{
+	width:100px;
+}
+
+span{
+	font-weight:700;
+}
+#ajout_fichier p{
+	padding-left:10px;
+	padding-right:10px;
+	font-size:1.5em;
+}
+label{
+	font-size:1.5em;
+}
+
+#form_saisie{
+	
+	display:flex;
+	justify-content:center;
+	align-items:flex-end;
+	margin: 1%;
+	
+	height:50px;
+	width:75%;
+}
+
+#saisie{
+	border: 2px solid LightGrey;
+	border-radius: 5px 0px 0px 5px;
+	font-size:1.5em;
+	width:100%;
+	height:100%;
+}
+
+#submit{
+	font-size:1.5em;
+	border: 2px solid LightGrey;
+	border-radius: 0px 5px 5px 0px;
+	height:55px;
+	background-color: WhiteSmoke;
+}
+
+#divpicto{
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+	#margin: auto;
+}
+
+#tablecate0{
+	#border: 1px solid LightGrey;
+	#border-spacing: 35px  ;
+	width:75%;
+	table-layout:fixed;
+}
+
+#tablecate1{
+	#border: 1px solid LightGrey;
+	#border-spacing: 35px ;
+	width:75%;
+	table-layout:fixed;
+	display:none;
+}
+#tablecate2{
+	#border: 1px solid LightGrey;
+	#border-spacing: 35px ;
+	width:75%;
+	table-layout:fixed;
+	display:none;
+}
+
+#tablepicto0{
+	width:80%;
+	table-layout:fixed;
+	display:none;
+	border-spacing:30px;
+}
+
+#tablepicto1{
+	width:80%;
+	table-layout:fixed;
+	display:none;
+	border-spacing:30px;
+}
+
+#tablepicto2{
+	width:80%;
+	table-layout:fixed;
+	display:none;
+	border-spacing:30px;
+}
+
+#gauchepic button, #gauchepic img{
+	display:none;
+}
+#droitepic button, #droitepic img{
+	display:none;
+}
+
+.fleche{
+	width:10%;
+}
+
+#gauche img{
+	
+	display:none;
+}
+
+.fleche button img{
+	margin-top:5px;
+	width:60px;
+}
+
+.fleche button{
+	background-color: White;
+	border: none;
+}
+
+#page th{
+	background-color: WhiteSmoke;
+	text-transform: uppercase;
+	border: 20px solid White;
+	width:120px;
+	height:100px;
+	text-align:center;
+	padding:0;
+	
+}
+
+
+#page th button{
+	border: none;
+	word-wrap: break-word;
+	width:100%;
+	height:100%;
+	text-align:center;
+	text-transform: uppercase;
+	font-size:1.5em;
+}
+
+
+
+
+ td{
+	border: 2px solid Grey;
+	border-spacing:10px;
+	width:70px;
+	height:70px;
+	text-align:center;
+	padding:0;
+	
+}
+
+#page td button{
+	border: none;
+	word-wrap: break-word;
+	width:100%;
+	height:100%;
+	text-align:center;
+	background-color: White;
+	padding:2px;
+	position: relative;
+	
+}
+
+
+
+.picto{
+	width:90px;
+	height:90px;
+}
+
+.mot, #profil p{
+	margin:0;
+	#font-size:2em;
+	#font-size:0.5em;
+}
+
+#Verbes{
+	background-color:Green;
+}
+#Personnes{
+	background-color:Yellow;
+}
+#Ressenti{
+	background-color:Red;
+}
+#Quotidien{
+	background-color:Orange;
+}
+#Adjectifs{
+	background-color:Blue;
+}
+
+#profil{
+	display:flex;
+	flex-direction:column;
+}
+
+
+.cross {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    margin: auto;
+}
+
+#deletemode{
+	display: block;
+}
+
+
