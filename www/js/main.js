@@ -55,11 +55,11 @@ function querySuccessClickPicto(tx, results) {
 	var txtPicto = " " + results.rows.item(0).mot;
 	document.getElementById("saisie").value += txtPicto;
 }
-
+/*
 function onClickPictoTxt(this.id){
 	
 }
-
+*/
 
 
 
@@ -202,6 +202,7 @@ function setApropos(){
 
 	if(nom.value!=undefined && prenom.value!=undefined){
 		txtPicto += "<p>Je m'appelle " + prenom.value + " " + nom.value + "</p>";
+		alert(txtPicto);
 		document.getElementById("apropos0").innerHTML = txtPicto;
 		txtPicto = "";
 	}
@@ -284,7 +285,7 @@ function newFav(){
 
 		reader.onloadend = function(e) {
 			favStr += this.result;
-			}
+			
 		};
 		reader.readAsText(file);
 	}, fail);
