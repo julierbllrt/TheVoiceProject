@@ -1,5 +1,5 @@
-
 document.addEventListener('deviceready', onDeviceReady, false);
+
 var favOb;
 
 function errorCB(err) {
@@ -187,20 +187,20 @@ function setApropos(){
 	var des = document.getElementById('description');
 
 	if(nom.value!=undefined && prenom.value!=undefined){
-		txtPicto += "Je m'appelle " + prenom.value + " " + nom.value;
-		document.getElementById('apropos0').innerHTML = '<p>' + txtPicto + '</p>';
+		txtPicto += "<p>Je m'appelle " + prenom.value + " " + nom.value + "</p>";
+		document.getElementById("apropos0").innerHTML = txtPicto;
 		txtPicto = "";
 	}
 
 	if(birthday.value!=undefined){
-		txtPicto += "J'ai ";
-		document.getElementById('apropos1').innerHTML = '<p>' + txtPicto + '</p>';
+		txtPicto += "<p>J'ai </p>";
+		document.getElementById("apropos1").innerHTML = txtPicto;
 		txtPicto = "";
 	}
 
 	if (tel!=undefined){
-		txtPicto += "Mon numéro de téléphone est le " + tel.value;
-		document.getElementById('apropos2').innerHTML = '<p>' + txtPicto + '</p>';
+		txtPicto += "<p>Mon numéro de téléphone est le " + tel.value + "</p>";
+		document.getElementById("apropos2").innerHTML = txtPicto;
 		txtPicto = "";
 	}
 
@@ -261,7 +261,18 @@ function setFav(){
 
 
 function newFav(){
-	var toAdd = document.getElementById();
+	var toAdd = document.getElementById("saisie").value;
+	var favStr = "";
+	favOb.file(function(file) {
+		var reader = new FileReader();
+
+		reader.onloadend = function(e) {
+			favStr += this.result;
+			}
+		};
+		reader.readAsText(file);
+	}, fail);
+	favStr += toAdd
 
 
 	if(!favOb){
