@@ -18,12 +18,11 @@ function onDeviceReady(){
 		dir.getFile("fav.txt", {create:true, exclusive: false}, function(file) {
 			console.log("got the file", file);
 			favOb = file;		
-			console.log('getfile');
-			readLog();	
+			console.log('getfile');	
 		});
 	});
-	setApropos();
-	setFav();
+	//setApropos();
+	//setFav();
 }
 
 
@@ -55,12 +54,10 @@ function querySuccessClickPicto(tx, results) {
 	var txtPicto = " " + results.rows.item(0).mot;
 	document.getElementById("saisie").value += txtPicto;
 }
-/*
-function onClickPictoTxt(this.id){
+
+function onClickPictoTxt(){
 	
 }
-*/
-
 
 
 
@@ -107,7 +104,7 @@ function onClickCategory(category){
 					actualbutton.setAttribute('onclick', 'goDelete(this.id)');
 				}
 			}
- 		imgPicto +='<div class="'+ category +'" id="test'+k+'"><img id="' + results.rows.item(k).id + '" class="picto" src="' + results.rows.item(k).picto + '"><p class="mot">' + results.rows.item(k).mot + '</p>'+'<img class="cross" src="img/croix png projet.png">'+'</div>';
+ 		imgPicto +='<div class="'+ category +'" id="test'+k+'"><img id="' + results.rows.item(k).id + '" class="picto" src="' + results.rows.item(k).picto + '"><p class="mot">' + results.rows.item(k).mot + '</p>'+'<img class="cross" src="icon/delete.png">'+'</div>';
  		actualbutton.innerHTML = imgPicto;
  		imgPicto="";
 
@@ -115,7 +112,7 @@ function onClickCategory(category){
 	for(var j = len; j < 36; j++){
 		var actualbutton = document.getElementById("picto"+j);
 		if(!actualbutton.hasAttribute('class')){
-			actualbutton.removeAttribute('onclick');
+			actualbutton.setAttribute('onclick', 'displayDispo()');
 			actualbutton.setAttribute('class', 'dispo');
 		}
  	}
@@ -180,15 +177,6 @@ function stopdeletemode(){
  }
 
 
- $('#admin').change(function() {
-	  if ($(this).is(':checked')) {
-	    $('#deletemode').css("display","block");
-	  } else {
-	    $('#deletemode').css("display","none");
-	  }
-	});
-
-
 // Set A propos
 //
 
@@ -200,20 +188,20 @@ function setApropos(){
 	var tel = document.getElementById('tel');
 	var des = document.getElementById('description');
 
-	if(nom.value!=undefined && prenom.value!=undefined){
+	if(nom.value!="" && prenom.value!=""){
 		txtPicto += "<p>Je m'appelle " + prenom.value + " " + nom.value + "</p>";
 		alert(txtPicto);
 		document.getElementById("apropos0").innerHTML = txtPicto;
 		txtPicto = "";
 	}
 
-	if(birthday.value!=undefined){
+	if(birthday.value!=""){
 		txtPicto += "<p>J'ai </p>";
 		document.getElementById("apropos1").innerHTML = txtPicto;
 		txtPicto = "";
 	}
 
-	if (tel!=undefined){
+	if (tel!=""){
 		txtPicto += "<p>Mon numéro de téléphone est le " + tel.value + "</p>";
 		document.getElementById("apropos2").innerHTML = txtPicto;
 		txtPicto = "";
