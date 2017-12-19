@@ -21,6 +21,7 @@ function fail(e) {
 }
    
 function onDeviceReady() {
+	alert("going onDeviceReady settings");
 	window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dir) {
 		console.log(dir.nativeURL);
 		console.log("got main dir", dir);

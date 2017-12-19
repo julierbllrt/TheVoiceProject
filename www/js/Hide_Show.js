@@ -14,7 +14,7 @@ $(document).ready(function(){
  		$('#droite img').css("display", "table");
  		$('#tablecate0').css("display", "table");
 		
- 		$('#tablefav').css("display", "none");
+ 		$('#tablefav'+i).css("display", "none");
  		$('#tableapropos').css("display", "none");
  		
  		
@@ -30,8 +30,8 @@ $(document).ready(function(){
  	$('#Favoris').click(function(){
 		$('#tablecate0').css("display", "none");
 		$('#tablefav0').css("display", "table");
-		$('#droite button').css("display", "none");
- 		$('#droite img').css("display", "none");
+		$('#droite button').css("display", "display");
+ 		$('#droite img').css("display", "display");
 	});
  	
 	$('#a_propos').click(function(){
@@ -64,7 +64,7 @@ $(document).ready(function(){
 				$('#droite img').css("display", "none");
 			}
 		}
-		else{
+		else if ($('#tablepicto'+n).css("display")=="table"){
 			$('#tablepicto'+n).css("display", "none");
 			n=n+1;
 			$('#tablepicto'+n).css("display", "table");
@@ -74,6 +74,19 @@ $(document).ready(function(){
 				$('#droite button').css("display","none");
 				$('#droite img').css("display", "none");
 			}
+		}
+		else{
+			$('#tablefav'+i).css("display", "none");
+			i=i+1;
+			$('#tablefav'+i).css("display", "table");
+			$('#gauche img').css("display", "table");
+			$('#gauche button').css("display","table");
+			if (i==2){
+				$('#droite button').css("display","none");
+				$('#droite img').css("display", "none");
+			}
+
+
 		}
 
 		
@@ -91,7 +104,7 @@ $(document).ready(function(){
 				$('#gauche img').css("display", "none");
 			}
 		}
-		else{
+		else if ($('#tablepicto'+n).css("display")== "table"){
 			$('#tablepicto'+n).css("display", "none");
 			n=n-1;
 			$('#tablepicto'+n).css("display", "table");
@@ -102,20 +115,34 @@ $(document).ready(function(){
 				$('#gauche img').css("display", "none");
 			}
 		}
+		else{
+			$('#tablefav'+i).css("display", "none");
+			i=i-1;
+			$('#tablefav'+i).css("display", "table");
+			$('#droite img').css("display", "table");
+			$('#droite button').css("display","table");
+			if (i==0){
+				$('#gauche button').css("display","none");
+				$('#gauche img').css("display", "none");
+			}
+		}
 	});
 
 
-	/*$('#admin').change(function() {
+	$('#admin').change(function() {
 	  if ($(this).is(':checked')) {
 	    $('#deletemode').css("display","block");
 	  } else {
 	    $('#deletemode').css("display","none");
 	  }
-	});*/
+	});
 
 	$('#settings').click(function(){
 		$('#form_profil').css("display","flex");
 		$('#page').css("position","static");
+
+		$('#tablefav').css("display", "none");
+ 		$('#tableapropos').css("display", "none");
 		
 		$('#tablecate'+i).css("display", "none");
 		$('#tablepicto'+n).css("display", "none");

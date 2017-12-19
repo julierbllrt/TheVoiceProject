@@ -16,12 +16,13 @@ function onDeviceReady(){
 		console.log(dir.nativeURL);
 		console.log("got main dir", dir);
 		dir.getFile("fav.txt", {create:true, exclusive: false}, function(file) {
-			console.log("got the file", file);
+			console.log("got the file favOb", file);
 			favOb = file;		
-			console.log('getfile');	
+			console.log('getfile favOb');	
+			setApropos();
+			setFav();
 		});
 	});
-	//setApropos();
 	//setFav();
 }
 
@@ -66,7 +67,7 @@ function onClickPictoTxt(id){
  // Click Category
  //
 
-function onClickCategory(category){
+ function onClickCategory(category){
 	//alert("going onclickcategory");
  	var db = window.openDatabase("Database", "1.0", "Picto Demo", 200000);
  	db.transaction(function(tx){queryDbClickCategory(tx, category)}, errorCB);
@@ -144,6 +145,10 @@ function godeletemode(){
 			actualbutton.setAttribute('onclick', 'goDelete(this.id)');
 		}
 	}
+	for (var j=0; j<36; j++){
+		var actualfav = document.getElementById("fav"+j);
+		actualfav.setAttribute('onclick', 'deleteFav(this.id)');
+	}
 	
 }
 
@@ -158,6 +163,11 @@ function stopdeletemode(){
 			actualbutton.setAttribute('onclick', 'onClickPicto(this.id)');
 		}
 	}
+	for (var j=0; j<36; j++){
+		var actualfav = document.getElementById("fav"+j);
+		actualfav.setAttribute('onclick', 'onClickPictoTxt(this.id)');
+	}
+	
 }
 
  function goDelete(id){
@@ -192,18 +202,20 @@ function setApropos(){
 
 	if(nom.value!="" && prenom.value!=""){
 		txtPicto += "<p>Je m'appelle " + prenom.value + " " + nom.value + "</p>";
-		alert(txtPicto);
 		document.getElementById("apropos0").innerHTML = txtPicto;
 		txtPicto = "";
 	}
 
 	if(birthday.value!=""){
-		txtPicto += "<p>J'ai </p>";
+		alert("going");
+		console.log(birthday.value);
+		alert("check console");
+		txtPicto += "<p>J'ai " + CalculAge(birthday.value) + " ans</p>";
 		document.getElementById("apropos1").innerHTML = txtPicto;
 		txtPicto = "";
 	}
 
-	if (tel!=""){
+	if (tel.value!=""){
 		txtPicto += "<p>Mon numéro de téléphone est le " + tel.value + "</p>";
 		document.getElementById("apropos2").innerHTML = txtPicto;
 		txtPicto = "";
@@ -213,15 +225,12 @@ function setApropos(){
 
 function CalculAge(birthday) {
     var td=new Date();
-    var dtn=birthday;
-    var an=dtn.substr(6,4);
-    var mois=dtn.substr(3,2);
-    var day= dtn.substr(0,2);
+    var dtn=birthday.split("-");
+    var an=dtn[0];
+    var mois=dtn[1];
+    var day= dtn[2];
     var age=td.getFullYear()-an;
- 
-    var mMois=td.getMonth()-mois+1;
- 
-     
+    var mMois=td.getMonth()-mois+1;  
     if(mMois < 0)
     {
         age=age-1;
@@ -234,11 +243,10 @@ function CalculAge(birthday) {
             if(mDate < 0)
             {
                 age=age-1;
-            }
-             
+            }        
         }
     }
-    return age;
+    return(age);
 }
 
 
@@ -255,7 +263,7 @@ function setFav(){
 			var res=this.result.split("\n");
 			for (var i=0; i<res.length; i++){
 				var favToSet = document.getElementById("fav"+i); 
-				txtPicto += '<p>'+res[i]+'</p>';
+				txtPicto += '<p>'+res[i]+'</p><img class="cross" src="icon/delete.png">';
 				favToSet.innerHTML = txtPicto;
 				txtPicto = "";
 			}
@@ -267,25 +275,50 @@ function setFav(){
 
 
 function newFav(){
+	if(!favOb){
+		return;
+	} 
 	var toAdd = document.getElementById("saisie").value;
-	toAdd += "\n"
+	document.getElementById("saisie").value = "";
+	toAdd += "\n";
 	var favStr = "";
 	favOb.file(function(file) {
 		var reader = new FileReader();
 
 		reader.onloadend = function(e) {
 			favStr += this.result;
-			
+			favStr += toAdd;
+			favOb.createWriter(function(fileWriter) {       
+				var blob = new Blob([favStr], {type:'text/plain'});
+				fileWriter.write(blob);
+			}, fail);
 		};
 		reader.readAsText(file);
 	}, fail);
-	favStr += toAdd;
+}
 
+
+function deleteFav(id){
 	if(!favOb){
 		return;
-	} 
-	favOb.createWriter(function(fileWriter) {       
-		var blob = new Blob([favStr], {type:'text/plain'});
-		fileWriter.write(blob);
+	}
+	var splitid = id.split("v");
+	var pos = splitid[1];
+	favOb.file(function(file) {
+		var reader = new FileReader();
+
+		reader.onloadend = function(e) {
+			var splitresult = this.result.split("\n");
+			alert("splitresult ="+splitresult);
+			splitresult.splice(pos, 1);
+			alert("new splitresult ="+splitresult);
+			var favStr = splitresult.join('\n');
+			alert("favStr ="+favStr);
+			favOb.createWriter(function(fileWriter) {       
+				var blob = new Blob([favStr], {type:'text/plain'});
+				fileWriter.write(blob);
+			}, fail);
+		};
+		reader.readAsText(file);
 	}, fail);
 }
