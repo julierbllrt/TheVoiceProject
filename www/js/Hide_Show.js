@@ -95,26 +95,26 @@ $(document).ready(function(){
 			}
 		}
 	});
-	
-	$('.dispo').click(function(){
-		$('#tablepicto'+n).css("display", "none");
-		$('#droite button').css("display","none");
-		$('#droite img').css("display", "none");
-		$('#gauche button').css("display","none");
-		$('#gauche img').css("display", "none");
-		$('#form_saisie').css("display","none");
-		
-		$('#corps').css("display","flex");
-		
-	});
 
-	$('#admin').change(function() {
+
+	/*$('#admin').change(function() {
 	  if ($(this).is(':checked')) {
 	    $('#deletemode').css("display","block");
 	  } else {
 	    $('#deletemode').css("display","none");
 	  }
-	});
+	});*/
 
 
 });
+
+function displayDispo(){
+	alert("going");
+	$('#tablepicto'+n).css("display", "none");
+	$('#droite button').css("display","none");
+	$('#droite img').css("display", "none");
+	$('#gauche button').css("display","none");
+	$('#gauche img').css("display", "none");
+	$('#form_saisie').css("display","none");
+	$('#corps').css("display","flex");
+}
