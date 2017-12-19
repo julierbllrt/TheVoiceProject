@@ -309,11 +309,8 @@ function deleteFav(id){
 
 		reader.onloadend = function(e) {
 			var splitresult = this.result.split("\n");
-			alert("splitresult ="+splitresult);
 			splitresult.splice(pos, 1);
-			alert("new splitresult ="+splitresult);
 			var favStr = splitresult.join('\n');
-			alert("favStr ="+favStr);
 			favOb.createWriter(function(fileWriter) {       
 				var blob = new Blob([favStr], {type:'text/plain'});
 				fileWriter.write(blob);

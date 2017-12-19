@@ -31,7 +31,7 @@
 				</div>
 			
 				<form id="form_saisie" action="">
-					<button id="favButton"><img id="favStar" src="icon/starFav.jpg"></button>
+					<button id="favButton" type="button" onclick="newFav()"><img id="favStar" src="icon/starFav.jpg"></button>
 					<input id="saisie" type="text" name="Saisie" value="" >
 					<input id="submit" type="button" value="OK" onclick="parler()">
 				</form>
@@ -211,7 +211,7 @@
 						</tr>
 						
 						<tr>
-							<th ><button id ="Favoris" >Favoris</button></th>
+							<th ><button id ="Favoris" onclick="setFav()">Favoris</button></th>
 							<th ><button id="a_propos" onclick="setApropos()">A propos</button></th>
 							<th ><button class="categorie" id ="sos" onclick="onClickCategory(this.id)">SOS</button></th>
 						</tr>
