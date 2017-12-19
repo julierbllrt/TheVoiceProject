@@ -26,7 +26,7 @@
 					</div>
 
 					<div>
-						<a href="settings.html"><button> <img src="icon/settings.png"> </button></a>
+						<button id="settings"> <img src="icon/settings.png"> </button>
 					</div>
 				</div>
 			
@@ -58,7 +58,20 @@
 							</button>
 							
 							<output id="list"></output>
-							<p>Catégorie du pictogramme: <input id="new_cate"class="saisie" type="text" name="category"/>
+							<p>Catégorie du pictogramme: 
+								<select>
+									<option value="personnes">Personnes</option>
+									<option value="verbes">Verbes</option>
+									<option value="adjectifs">Adjectifs</option>
+									<option value="nourriture">Nourriture</option>
+									<option value="quotidien">Quotidien</option>
+									<option value="ressenti">Ressenti</option>
+									<option value="chiffre">Chiffres Et Nombres</option>
+									<option value="verbes">Verbes</option>
+									<option value="santé">Santé</option>
+									<option value="sport">Sports Et Loisirs</option>
+									<option value="santé">Santé</option>
+								</select>
 							Signification du pictogramme: <input id="signification"class="saisie" type="text" name="mot"/></p>
 							<input id="select_fichier" class="submit" type="button" name="upload" value="Enregistrer">
 							
@@ -66,7 +79,60 @@
 						</form>
 						
 					</div>
-					
+					<form id="settings">
+						<table  id ="profil">
+						
+							<tr>
+								<td class="barre">
+									<p>Mode Administrateur 
+									<label class="switch">
+										<input type="checkbox">
+										<span class="slider round"></span>
+									</label></p>
+								</td>
+								
+							</tr>
+							<tr>
+								<td>
+									<p>Information personnelle</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Nom: </p><input id="nom" class="saisie" type="text" name="nom"/>
+								</td>
+								
+							</tr>
+							<tr>
+								<td>
+									<p>Prénom: </p><input  id="prenom" class="saisie" type="text" name="prenom"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Date de naissance: </p><input  id="birthday"class="saisie" type="date" name="pseudo"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Numéro de téléphone: </p><input  id="tel" class="saisie" type="number" name="tel"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Description: </p><textarea id="description" class="saisie" type="text" name="des"></textarea>
+								</td>
+								
+							</tr>
+							<tr>
+								<td>
+									<input id ="set" class="submit" type="button" name="upload" value="Enregistrer" >
+								</td>
+							</tr>
+							
+						
+						</table>
+					</form>
 					<table id="tablecate0">
 						<tr>
 							<th ><button class="categorie" id ="Personnes"onclick="onClickCategory(this.id)">Personnes</button></th>
