@@ -55,8 +55,10 @@ function querySuccessClickPicto(tx, results) {
 	document.getElementById("saisie").value += txtPicto;
 }
 
-function onClickPictoTxt(){
-	
+function onClickPictoTxt(id){
+	var button = document.getElementById(id);
+	var txtPicto = button.firstElementChild.innerHTML;
+	document.getElementById("saisie").value += txtPicto;
 }
 
 
