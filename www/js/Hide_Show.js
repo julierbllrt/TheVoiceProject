@@ -5,6 +5,10 @@ $(document).ready(function(){
 	
  
  	$('#home').click(function(){
+		$('#tablepicto'+n).css("display", "none");
+		$('#tablecate'+i).css("display", "none");
+		
+		$('#form_saisie').css("display","flex");
 		$('#page').css("position","fixed");
 		$('#droite button').css("display", "table");
  		$('#droite img').css("display", "table");
@@ -13,12 +17,12 @@ $(document).ready(function(){
  		$('#tablefav').css("display", "none");
  		$('#tableapropos').css("display", "none");
  		
- 		$('#tablepicto'+n).css("display", "none");
+ 		
  		$('#gauche button').css("display", "none");
  		$('#gauche img').css("display", "none");
 		$('#corps').css("display","none");
 		$('#form_profil').css("display","none");
- 		$('#tablecate'+i).css("display", "none");
+ 		
  		i=0;
  		n=0;
  	});
