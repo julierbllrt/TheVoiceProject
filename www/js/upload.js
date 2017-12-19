@@ -1,7 +1,7 @@
 
 document.getElementById('select_fichier').addEventListener('touchend',copier, fail);
 document.getElementById('test').addEventListener('touchend',pick, false);
-var category;
+var cate;
 var fileOb;
 var newDirOb;
 var oldDirOb;
@@ -45,9 +45,45 @@ function pick() {
 	
 }
 
+
+
+
+function changeForm() {
+	
+	document.getElementById("form_verbe").style.display="none";
+	document.getElementById("form_personnes").style.display="none";
+	document.getElementById("form_obj").style.display="none";
+	
+	cate = document.getElementById("new_cate").value; 
+	alert(cate);
+	if (cate=="Verbes"){
+		
+		document.getElementById("form_verbe").style.display="table";
+		document.getElementById("form_irr").style.display="none";
+		
+		if(document.getElementById("irr").cheched){
+			
+			document.getElementById("form_irr").style.display="table";
+			
+		}
+	}else if (cate=="Personnes"){
+		
+		document.getElementById("form_personnes").style.display="table";
+		
+	}else if (cate=="Nourriture" || cate=="Emotion" || cate=="Santé" || cate=="Sport & Loisirs" || cate=="Quotidien" ){
+		
+		document.getElementById("form_obj").style.display="table";
+		
+	}
+}
+
+
+
+
+
 function copier() {	
 	var newName = document.getElementById("signification").value+".png";
-	var cate = document.getElementById("new_cate").value;
+		
 	//alert(cate);
 	//console.log(newName);
 	//console.log("fichier selectionné:",fileOb);
@@ -65,9 +101,30 @@ function copier() {
 		});		
 	}, fail);
 	
+	
 	//alert(fileOb.name+" copié");
 	console.log(fileOb);
-
+	
+	
+	if (cate=="Verbes"){
+		
+		document.getElementById("form_verbe").style.display("table");
+		document.getElementById("form_irr").style.display("none");
+		
+		if(document.getElementById("irr").attr("cheched")){
+			
+			document.getElementById("form_irr").style.display("table");
+			
+		}
+	}else if (cate=="Personne"){
+		
+		document.getElementById("form_personnes").style.display("table");
+		
+	}else if (cate=="Nourriture" || cate=="Emotion" || cate=="Santé" || cate=="Sport & Loisirs" || cate=="Quotidien" ){
+		
+		document.getElementById("form_obj").style.display("table");
+		
+	}
 	
 	//alert('getfile');
 }

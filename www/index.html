@@ -59,22 +59,92 @@
 							
 							<output id="list"></output>
 							<p>Catégorie du pictogramme: 
-								<select>
-									<option value="personnes">Personnes</option>
-									<option value="verbes">Verbes</option>
-									<option value="adjectifs">Adjectifs</option>
-									<option value="nourriture">Nourriture</option>
-									<option value="quotidien">Quotidien</option>
-									<option value="ressenti">Ressenti</option>
-									<option value="chiffre">Chiffres Et Nombres</option>
-									<option value="verbes">Verbes</option>
-									<option value="santé">Santé</option>
-									<option value="sport">Sports Et Loisirs</option>
-									<option value="adverbes">Adverbes</option>
+								<select id="new_cate" oninput="changeForm()">
+									<option value="Personnes">Personnes</option>
+									<option value="Verbes">Verbes</option>
+									<option value="Adjectifs">Adjectifs</option>
+									<option value="Nourriture">Nourriture</option>
+									<option value="Quotidien">Quotidien</option>
+									<option value="Emotion">Emotion</option>
+									<option value="Chiffres & Nombres">Chiffres & Nombres</option>
+									<option value="Santé">Santé</option>
+									<option value="Sport & Loisirs">Sports Et Loisirs</option>
+									<option value="Adverbes">Adverbes</option>
 								</select>
-							Signification du pictogramme: <input id="signification"class="saisie" type="text" name="mot"/></p>
-							<input id="select_fichier" class="submit" type="button" name="upload" value="Enregistrer">
+							</p>
+							<p>Signification du pictogramme: <input id="signification"class="saisie" type="text" name="mot"/></p>
 							
+							<div id="form_verbe">
+							<p>
+								Auxiliaire du verbe au passé composé: 
+								<select id="auxi">
+									<option value="etre">Etre</option>
+									<option value="avoir">Avoir</option>
+								</select>
+								<br>
+								Participé passé: <input id="pp"class="saisie" type="text" name="pp"/>
+								<br>
+								Groupe du verbe: 
+								<select id="groupe">
+									<option value="1">1er groupe</option>
+									<option value="2">2ème groupe</option>
+									<option value="3">3ème groupe</option>
+								</select>
+								<br>
+								Irrégulier (présent/futur) : <input id="irr" type="checkbox" name="irr" value="1"/>
+								<br>
+								<div id="form_irr">
+									<table>
+									<caption>Conjugaison au présent: </caption>
+										<tr>
+										       <td>1ère p. S<input class="saisie" type="text" name="cp"/></td>
+										       <td>2ème p. S<input class="saisie" type="text" name="cp"/></td>
+											<td>3ème p. S<input class="saisie" type="text" name="cp"/></td>
+										</tr>
+										<tr>
+										       <td>1ère p. P<input class="saisie" type="text" name="cp"/></td>
+										       <td>2ème p. P<input class="saisie" type="text" name="cp"/></td>
+										       <td>3ème p. P<input class="saisie" type="text" name="cp"/></td>											
+										</tr>
+									</table>
+									<br>
+									Radical au futur: <input id="pp"class="saisie" type="text" name="pp"/>
+									
+								</div>
+								</p>
+							</div>
+							
+							<div id="form_personnes">
+							<p>
+								Personne?: 
+								<select id="per">
+									<option value="1">1ère p. S</option>
+									<option value="2">2ème p. S</option>
+									<option value="3">3ème p. S</option>
+									<option value="4">1ère p. P</option>
+									<option value="5">2ème p. P</option>
+									<option value="6">3ème p. P</option>
+								</select>
+								<br>
+								Féminin? : <input id="F" type="checkbox" name="F" value="1"/>
+								
+								</p>
+							</div>
+							
+							<div id="form_obj">
+							<p>
+								Personne?: 
+								<select id="per">
+									<option value="3">3ème p. S</option>
+									<option value="6">3ème p. P</option>
+								</select>
+								<br>
+								Féminin? : <input id="F" type="checkbox" name="F" value="1"/>
+								
+								</p>
+							</div>
+							
+							<input id="select_fichier" class="submit" type="button" name="upload" value="Enregistrer">
 							
 						</form>
 						
@@ -141,7 +211,7 @@
 						</tr>
 						
 						<tr>
-							<th ><button id ="Favoris" onclick="setFav()">Favoris</button></th>
+							<th ><button id ="Favoris" >Favoris</button></th>
 							<th ><button id="a_propos" onclick="setApropos()">A propos</button></th>
 							<th ><button class="categorie" id ="sos" onclick="onClickCategory(this.id)">SOS</button></th>
 						</tr>
@@ -151,7 +221,7 @@
 						<tr>
 							<th ><button class="categorie" id ="Nourriture" onclick="onClickCategory(this.id)">Nourriture</button></th>
 							<th ><button class="categorie" id ="Quotidien"onclick="onClickCategory(this.id)">Quotidien</button></th> 
-							<th ><button class="categorie" id ="Ressenti"onclick="onClickCategory(this.id)">Ressenti</button></th>
+							<th ><button class="categorie" id ="Emotion"onclick="onClickCategory(this.id)">Emotion</button></th>
 						</tr>
 						
 						<tr>
@@ -164,14 +234,14 @@
 					<table id="tablecate2">
 						<tr>
 							<th ><button class="categorie" id="Adverbes" onclick="onClickCategory(this.id)">Adverbes</button></th>
-							<th ><a href="upload.html"><button class="categorie">+</button></a></th>
-							<th ><a href="upload.html"><button class="categorie">+</button></a></th>
+							<th ><button class="categorie">+</button></th>
+							<th ><button class="categorie">+</button></th>
 						</tr>
 						
 						<tr>
-							<th ><a href="upload.html"><button class="categorie">+</button></a></th>
-							<th ><a href="upload.html"><button class="categorie">+</button></a></th>
-							<th ><a href="upload.html"><button class="categorie">+</button></a></th>
+							<th ><button class="categorie">+</button></th>
+							<th ><button class="categorie">+</button></th>
+							<th ><button class="categorie">+</button></th>
 						</tr>
 					</table>
 					
@@ -253,57 +323,57 @@
 
 					<table id="tableapropos">
 						<tr>
-							<th ><button id="apropos0" onclick="onClickPictoTxt(this.id)"></button></th>
-							<th ><button id="apropos1" onclick="onClickPictoTxt(this.id)"></button></th> 
-							<th ><button id="apropos2" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="apropos0" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="apropos1" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th> 
+							<th ><button id="apropos2" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
 						</tr>
 						
 						<tr>
-							<th ><button id="apropos3" onclick="onClickPictoTxt(this.id)"></button></th>
-							<th ><button id="apropos4" onclick="onClickPictoTxt(this.id)"></button></th>
-							<th ><button id="apropos5" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="apropos3" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="apropos4" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="apropos5" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
 						</tr>
 					</table>
 
 					<table id="tablefav0">
 						<tr>
-							<th ><button id="fav0" onclick="onClickPictoTxt(this.id)"></button></th>
-							<th ><button id="fav1" onclick="onClickPictoTxt(this.id)"></button></th> 
-							<th ><button id="fav2" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="fav0" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="fav1" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th> 
+							<th ><button id="fav2" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
 						</tr>
 						
 						<tr>
-							<th ><button id="fav3" onclick="onClickPictoTxt(this.id)"></button></th>
-							<th ><button id="fav4" onclick="onClickPictoTxt(this.id)"></button></th>
-							<th ><button id="fav5" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="fav3" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="fav4" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="fav5" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
 						</tr>
 					</table>
 
 					<table id="tablefav1">
 						<tr>
-							<th ><button id="fav6" onclick="onClickPictoTxt(this.id)"></button></th>
-							<th ><button id="fav7" onclick="onClickPictoTxt(this.id)"></button></th> 
-							<th ><button id="fav8" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="fav6" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="fav7" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th> 
+							<th ><button id="fav8" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
 						</tr>
 						
 						<tr>
-							<th ><button id="fav9" onclick="onClickPictoTxt(this.id)"></button></th>
-							<th ><button id="fav10" onclick="onClickPictoTxt(this.id)"></button></th>
-							<th ><button id="fav11" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="fav9" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="fav10" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="fav11" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
 						</tr>
 					</table>
 
 					<table id="tablefav2">
 						<tr>
-							<th ><button id="fav12" onclick="onClickPictoTxt(this.id)"></button></th>
-							<th ><button id="fav13" onclick="onClickPictoTxt(this.id)"></button></th> 
-							<th ><button id="fav14" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="fav12" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="fav13" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th> 
+							<th ><button id="fav14" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
 						</tr>
 						
 						<tr>
-							<th ><button id="fav15" onclick="onClickPictoTxt(this.id)"></button></th>
-							<th ><button id="fav16" onclick="onClickPictoTxt(this.id)"></button></th>
-							<th ><button id="fav17" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="fav15" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="fav16" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
+							<th ><button id="fav17" class="pictoTxt" onclick="onClickPictoTxt(this.id)"></button></th>
 						</tr>
 					</table>
 
@@ -323,9 +393,10 @@
 			<script type="text/javascript" src="js/Hide_Show.js"></script>
 			<script type="text/javascript" src="js/dbStart.js"></script>
 			
-			<script type="text/javascript" src="js/upload.js"></script>
+			
 			<script type="text/javascript" src="js/main.js"></script>
 			<script type="text/javascript" src="js/speech.js"></script>
+			<script type="text/javascript" src="js/upload.js"></script>
 			<script type="text/javascript" src="js/index.js"></script>
 			
 			
