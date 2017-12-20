@@ -67,8 +67,8 @@
 									<option value="Sport & Loisirs">Sports Et Loisirs</option>
 									<option value="Adverbes">Adverbes</option>
 								</select>
-							</p>
-							<p>Signification du pictogramme: <input id="signification"class="saisie" type="text" name="mot"/></p>
+							
+							Signification du pictogramme: <input id="signification"class="saisie" type="text" name="mot"/></p>
 							
 							<div id="form_verbe">
 							<p>
@@ -87,7 +87,7 @@
 									<option value="3">3ème groupe</option>
 								</select>
 								<br>
-								Irrégulier (présent/futur) : <input id="irr" type="checkbox" name="irr" value="1"/>
+								Irrégulier? (présent/futur) : <input id="irr" type="checkbox" name="irr" value="1" onchange="document.getElementById('form_irr').style.display='table'"/>
 								<br>
 								<div id="form_irr">
 									<table>

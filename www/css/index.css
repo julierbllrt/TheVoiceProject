@@ -74,6 +74,39 @@ body {
 	padding:10px;
 	width:75%;
 }
+#form_verbe, #form_obj, #form_personnes, #form_irr{
+	#background-color:yellow;
+	border:1px solid Grey;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+
+}
+#form_irr {
+	border:none;
+	width:100%;
+	font-size:1.5em;
+	
+}
+#form_irr table{
+	display:table;
+	width:100%;
+
+}
+#form_irr table td {
+	border:none;
+	max-width: 100%;
+	height:auto;
+	padding:3px;
+
+}
+#form_irr table td .saisie{
+	max-width: 100%;
+	display:table;
+	margin:2px;
+
+}
 
 .saisie{
 	border: 1px solid Grey;

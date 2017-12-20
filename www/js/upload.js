@@ -61,11 +61,6 @@ function changeForm() {
 		document.getElementById("form_verbe").style.display="table";
 		document.getElementById("form_irr").style.display="none";
 		
-		if(document.getElementById("irr").cheched){
-			
-			document.getElementById("form_irr").style.display="table";
-			
-		}
 	}else if (cate=="Personnes"){
 		
 		document.getElementById("form_personnes").style.display="table";
