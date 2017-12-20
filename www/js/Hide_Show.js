@@ -128,13 +128,16 @@ $(document).ready(function(){
 		}
 	});
 
-
 	$('#admin').change(function() {
-	  if ($(this).is(':checked')) {
-	    $('#deletemode').css("display","block");
-	  } else {
-	    $('#deletemode').css("display","none");
-	  }
+		alert("changing");
+		if ($(this).is(':checked')){
+			alert("godelete");
+			godeletemode();
+		}
+		else {
+			alert("stopdelete");
+			stopdeletemode();
+		}
 	});
 
 	$('#settings').click(function(){

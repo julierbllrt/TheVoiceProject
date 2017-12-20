@@ -100,32 +100,33 @@ function onClickPictoTxt(id){
 		actualbutton.innerHTML = imgPicto;
 			if(actualbutton.hasAttribute('class')){
 				actualbutton.removeAttribute('class');
-				if (document.getElementById("deletemode").innerHTML=="GO DELETE"){
-					actualbutton.setAttribute('onclick', 'onClickPicto(this.id)');
-				}
-				else{
+				if ($('#admin').is(':checked')){
 					actualbutton.setAttribute('onclick', 'goDelete(this.id)');
 				}
+				else{
+					actualbutton.setAttribute('onclick', 'onClickPicto(this.id)');
+				}
 			}
+			
  		imgPicto +='<div class="'+ category +'" id="test'+k+'"><img id="' + results.rows.item(k).id + '" class="picto" src="' + results.rows.item(k).picto + '"><p class="mot">' + results.rows.item(k).mot + '</p>'+'<img class="cross" src="icon/delete.png">'+'</div>';
  		actualbutton.innerHTML = imgPicto;
  		imgPicto="";
+
 
  	}
 	for(var j = len; j < 36; j++){
 		var actualbutton = document.getElementById("picto"+j);
 		if(!actualbutton.hasAttribute('class')){
-			actualbutton.setAttribute('onclick', 'displayDispo()');
 			actualbutton.setAttribute('class', 'dispo');
+			actualbutton.setAttribute('onclick', 'displayDispo()');
 		}
- 	}
- 	if(document.getElementById("deletemode").innerHTML=="STOP DELETE"){
- 		$('.cross').css("display", "block");
- 	}
- 	else{
- 		$('.cross').css("display", "none");
- 	}
-
+	}
+	if ($('#admin').is(':checked')){
+		$('.cross').css("display", "block");
+	}
+	else{
+		$('.cross').css("display", "none");
+	}
  }
  
 
@@ -135,17 +136,17 @@ function onClickPictoTxt(id){
  //
 
 function godeletemode(){
-	var buttondelete = document.getElementById("deletemode");
-	buttondelete.setAttribute('onclick', 'stopdeletemode()');
-	buttondelete.innerHTML="STOP DELETE";
 	$('.cross').css("display", "block");
 	for (var i=0; i<36; i++){
 		var actualbutton = document.getElementById("picto"+i);
-		if (actualbutton.className!="dispo"){
+		if (!actualbutton.hasAttribute('class')){
 			actualbutton.setAttribute('onclick', 'goDelete(this.id)');
 		}
+		else {
+			actualbutton.setAttribute('onclick', 'displayDispo()');		
+		}
 	}
-	for (var j=0; j<36; j++){
+	for (var j=0; j<18; j++){
 		var actualfav = document.getElementById("fav"+j);
 		actualfav.setAttribute('onclick', 'deleteFav(this.id)');
 	}
@@ -153,17 +154,17 @@ function godeletemode(){
 }
 
 function stopdeletemode(){
-	var buttondelete=document.getElementById("deletemode");
-	buttondelete.setAttribute('onclick', 'godeletemode()');
-	buttondelete.innerHTML="GO DELETE";
 	$('.cross').css("display", "none");
 	for (var i=0; i<36; i++){
 		var actualbutton = document.getElementById("picto"+i);
-		if (actualbutton.className!="dispo"){
+		if (!actualbutton.hasAttribute('class')){
 			actualbutton.setAttribute('onclick', 'onClickPicto(this.id)');
 		}
+		else{
+			actualbutton.removeAttribute('onclick');
+		}
 	}
-	for (var j=0; j<36; j++){
+	for (var j=0; j<18; j++){
 		var actualfav = document.getElementById("fav"+j);
 		actualfav.setAttribute('onclick', 'onClickPictoTxt(this.id)');
 	}
@@ -265,6 +266,7 @@ function setFav(){
 				var favToSet = document.getElementById("fav"+i); 
 				txtPicto += '<p>'+res[i]+'</p><img class="cross" src="icon/delete.png">';
 				favToSet.innerHTML = txtPicto;
+				alert(favToSet.innerHTML);
 				txtPicto = "";
 			}
 		};
