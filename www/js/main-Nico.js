@@ -10,6 +10,9 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 var favOb;
 var previousPicto;
+var monSujet;
+var monVerbe;
+
 
 function errorCB(err) {
  	alert("Error processing SQL: "+err.code);
@@ -62,21 +65,32 @@ function queryDbClickPicto(tx, id) {
 }
 
 function querySuccessClickPicto(tx, results) {
-	var currentPicto = results.rows.item(0);
-	var monSujet;
-	var monVerbe;
+	var currentPicto = results;
+	var txtPicto;
 
-	if(!previousPicto.picto.includes("Verbes")){
+	if (previousPicto.rows.item(0).picto ==''){
+		previousPicto = results; 
+	}
+
+
+	if(!previousPicto.rows.item(0).picto.includes("Verbes")){
 		monSujet = recupSujetFromDB(previousPicto);
+		txtPicto = " " + monSujet.mot;
 	}
-	
-	if(currentPicto.picto.includes("Verbes")){
+	else {
 		monVerbe = recupVerbeFromDB(currentPicto);
+		txtPicto = " " + monVerbe.mot;
 	}
 
-	var txtPicto = " " + conjugaisonPresent(monSujet,monVerbe);
+
+	if(monSujet.mot && monVerbe.mot){
+		txtPicto = " " + conjugaisonPresent(monSujet,monVerbe);
+	}
+
+	
 	document.getElementById("saisie").value += txtPicto;
-	previousPicto = results.rows.item(0);
+	previousPicto = currentPicto;
+
 }
 
 function onClickPictoTxt(id){
