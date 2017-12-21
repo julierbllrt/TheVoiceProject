@@ -129,13 +129,11 @@ $(document).ready(function(){
 	});
 
 	$('#admin').change(function() {
-		alert("changing");
+		
 		if ($(this).is(':checked')){
-			alert("godelete");
 			godeletemode();
 		}
 		else {
-			alert("stopdelete");
 			stopdeletemode();
 		}
 	});
