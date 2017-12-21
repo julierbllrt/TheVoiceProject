@@ -53,6 +53,8 @@ function queryDbClickPicto(tx, id) {
 
 function querySuccessClickPicto(tx, results) {
 	var txtPicto = " " + results.rows.item(0).mot;
+	var  vitPicto = document.getElementById("vitId");
+	blabla(txtPicto, vitPicto.value);
 	document.getElementById("saisie").value += txtPicto;
 }
 
@@ -268,14 +270,22 @@ function setFav(){
 	favOb.file(function(file) {
 		var reader = new FileReader();
 		var txtPicto = "";
-
 		reader.onloadend = function(e) {
-			var res=this.result.split("\n");
-			for (var i=0; i<res.length; i++){
+			var res=this.result.split("\\");
+			for (var i=0; i<res.length-1; i++){
 				var favToSet = document.getElementById("fav"+i); 
 				txtPicto += '<p>'+res[i]+'</p><img class="cross" src="icon/delete.png">';
 				favToSet.innerHTML = txtPicto;
 				txtPicto = "";
+			}
+			for (var j=res.length-1; j<18; j++){
+				document.getElementById("fav"+j).innerHTML="";
+			}
+			if ($('#admin').is(':checked')){
+				$('.cross').css("display", "block");
+			}
+			else{
+				$('.cross').css("display", "none");
 			}
 		};
 		reader.readAsText(file);
@@ -283,28 +293,49 @@ function setFav(){
 
 }
 
+function isEmpty(txt){
+	var compteur=0;
+	for (var i=0; i<txt.length; i++){
+		if (txt.charAt(i)==" "){
+			compteur++;
+		}
+	}
+	return(compteur==txt.length);
+}
+
 
 function newFav(){
-	if(!favOb){
-		return;
-	} 
 	var toAdd = document.getElementById("saisie").value;
-	document.getElementById("saisie").value = "";
-	toAdd += "\n";
-	var favStr = "";
-	favOb.file(function(file) {
-		var reader = new FileReader();
+	if (!isEmpty(toAdd) && document.getElementById("fav17").innerHTML==""){
+		if(!favOb){
+			return;
+		} 
+		document.getElementById("saisie").value = "";
+		toAdd += "\\";
+		var favStr = "";
+		favOb.file(function(file) {
+			var reader = new FileReader();
 
-		reader.onloadend = function(e) {
-			favStr += this.result;
-			favStr += toAdd;
-			favOb.createWriter(function(fileWriter) {       
-				var blob = new Blob([favStr], {type:'text/plain'});
-				fileWriter.write(blob);
-			}, fail);
-		};
-		reader.readAsText(file);
-	}, fail);
+			reader.onloadend = function(e) {
+				favStr += this.result;
+				favStr += toAdd;
+				favOb.createWriter(function(fileWriter) {       
+					var blob = new Blob([favStr], {type:'text/plain'});
+					fileWriter.write(blob);
+				}, fail);
+			};
+			reader.readAsText(file);
+		}, fail);
+	}
+	else if(isEmpty(toAdd)){
+		alert("Un Favoris ne peut pas être vide");
+	}
+	else if(document.getElementById("fav17").innerHTML!=""){
+		alert("Trop de favoris, veuillez en supprimer un.");
+	}
+	else {
+		alert("Unknown error");
+	}
 }
 
 
@@ -318,9 +349,10 @@ function deleteFav(id){
 		var reader = new FileReader();
 
 		reader.onloadend = function(e) {
-			var splitresult = this.result.split("\n");
+			var splitresult = this.result.split("\\");
 			splitresult.splice(pos, 1);
-			var favStr = splitresult.join('\n');
+			var favStr = splitresult.join("\\");
+			alert("deleted");
 			favOb.createWriter(function(fileWriter) {       
 				var blob = new Blob([favStr], {type:'text/plain'});
 				fileWriter.write(blob);

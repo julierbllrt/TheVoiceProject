@@ -337,8 +337,42 @@ function successCB() {
 
 // Cordova is ready
 //
-function onDeviceReady() {
-	//alert("going OnDeviceReady");
-	var db = window.openDatabase("Database", "1.0", "Picto Demo", 200000);
-	db.transaction(populateDB, errorCB);
+function checkDb() {
+	startOb.file(function(file) {
+		var reader = new FileReader();
+		var txtPicto = "";
+		reader.onloadend = function(e) {
+			var res=this.result;
+			if(res==""){
+				var db = window.openDatabase("Database", "1.0", "Picto Demo", 200000);
+				alert("populating db");
+				db.transaction(populateDB, errorCB);
+				startOb.createWriter(function(fileWriter) {       
+					var blob = new Blob(["Started"], {type:'text/plain'});
+					fileWriter.write(blob);
+				}, fail);
+			}
+			else{
+				alert("already started");
+			}
+
+		};
+		reader.readAsText(file);
+	}, fail);
+	
+	
+}
+
+
+function onDeviceReady(){
+	window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dir) {
+		console.log(dir.nativeURL);
+		console.log("got main dir", dir);
+		dir.getFile("start.txt", {create:true, exclusive: false}, function(file) {
+			console.log("got the file startOb", file);
+			startOb = file;		
+			console.log('getfile startOb');	
+			checkDb();
+		});
+	});
 }
