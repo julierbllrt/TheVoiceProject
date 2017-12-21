@@ -56,20 +56,26 @@
 							<output id="list"></output>
 							<p>Catégorie du pictogramme: 
 								<select id="new_cate" oninput="changeForm()">
-									<option value="Personnes">Personnes</option>
-									<option value="Verbes">Verbes</option>
 									<option value="Adjectifs">Adjectifs</option>
-									<option value="Nourriture">Nourriture</option>
-									<option value="Quotidien">Quotidien</option>
-									<option value="Emotion">Emotion</option>
+									<option value="Adverbes">Adverbes</option>
+									<option value="Animaux">Animaux</option>
 									<option value="Chiffres & Nombres">Chiffres & Nombres</option>
+									<option value="Emotion">Emotion</option>
+									<option value="Intéractions">Intéractions</option>
+									<option value="Lieu">Lieu</option>
+									<option value="Maison">Maison</option>
+									<option value="Metier">Metier</option>
+									<option value="Nourriture">Nourriture</option>
+									<option value="Personnes">Personnes</option>
+									<option value="Quotidien">Quotidien</option>
 									<option value="Santé">Santé</option>
 									<option value="Sport & Loisirs">Sports Et Loisirs</option>
-									<option value="Adverbes">Adverbes</option>
+									<option value="Verbes">Verbes</option>
+
 								</select>
 							
 							Signification du pictogramme: <input id="signification"class="saisie" type="text" name="mot"/></p>
-							
+							<!--
 							<div id="form_verbe">
 							<p>
 								Auxiliaire du verbe au passé composé: 
@@ -138,7 +144,7 @@
 								Féminin? : <input id="F" type="checkbox" name="F" value="1"/>
 								
 								</p>
-							</div>
+							</div>-->
 							
 							<input id="select_fichier" class="submit" type="button" name="upload" value="Enregistrer">
 							
@@ -243,14 +249,16 @@
 					<table id="tablecate2">
 						<tr>
 							<th ><button class="categorie" id="Adverbes" onclick="onClickCategory(this.id)">Adverbes</button></th>
-							<th ><button class="categorie">+</button></th>
-							<th ><button class="categorie">+</button></th>
+							<th ><button class="categorie" id="Intéractions" onclick="onClickCategory(this.id)">Intéractions</button></th>
+							<th ><button class="categorie" id="Maison" onclick="onClickCategory(this.id)">Maison</button></th>
+
 						</tr>
 						
 						<tr>
-							<th ><button class="categorie">+</button></th>
-							<th ><button class="categorie">+</button></th>
-							<th ><button class="categorie">+</button></th>
+							<th > <button class="categorie" id="Animaux" onclick="onClickCategory(this.id)" > Animaux </button> </th>
+							<th > <button class="categorie" id="Metier" onclick="onClickCategory(this.id)"> Metier </button> </th>
+							<th ><button class="categorie" id="Lieu" onclick="onClickCategory(this.id)"> Lieu </button> </th>
+
 						</tr>
 					</table>
 					
@@ -389,7 +397,7 @@
 
 					
 					<div class="fleche" id="droite">
-						<button> <img src="icon/right.png"> </button>
+						<button type="button"> <img src="icon/right.png"> </button>
 					</div>
 					
 				</div>

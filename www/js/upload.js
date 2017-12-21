@@ -22,7 +22,7 @@ function pick() {
 
 			//console.log(data);
 			pathToFile=data[0];
-			document.getElementById('list').innerHTML = ['<img src="', pathToFile,'"/>'].join('');
+			document.getElementById('list').innerHTML = ['<img style="width:15%;"src="', pathToFile,'"/>'].join('');
 			index=pathToFile.lastIndexOf('/');
 			pathToDir=pathToFile.substring(0,index);
 			fileName=pathToFile.substring(index+1);

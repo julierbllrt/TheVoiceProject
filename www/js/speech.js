@@ -15,7 +15,7 @@ function blabla(txt,vit){
 function parler() {
 	var word=document.getElementById("saisie");
 	var  vit = document.getElementById("vitId");
-       blabla(word.value,vit.value)
+       blabla(word.value,vit.value);
 	word.value="";
 }
 /*
