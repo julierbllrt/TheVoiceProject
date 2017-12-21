@@ -306,36 +306,33 @@ function isEmpty(txt){
 
 function newFav(){
 	var toAdd = document.getElementById("saisie").value;
-	if (!isEmpty(toAdd) && document.getElementById("fav17").innerHTML==""){
-		if(!favOb){
-			return;
-		} 
-		document.getElementById("saisie").value = "";
-		toAdd += "\\";
-		var favStr = "";
-		favOb.file(function(file) {
-			var reader = new FileReader();
+	if(!favOb){
+		return;
+	} 
+	document.getElementById("saisie").value = "";
+	favOb.file(function(file) {
+		var reader = new FileReader();
 
-			reader.onloadend = function(e) {
-				favStr += this.result;
+		reader.onloadend = function(e) {
+			var splitresult = this.result.split("\\");
+			if(!isEmpty(toAdd) && splitresult.length<19){
+				var favStr = splitresult.join("\\");
+				toAdd += "\\";
 				favStr += toAdd;
 				favOb.createWriter(function(fileWriter) {       
 					var blob = new Blob([favStr], {type:'text/plain'});
 					fileWriter.write(blob);
 				}, fail);
-			};
-			reader.readAsText(file);
-		}, fail);
-	}
-	else if(isEmpty(toAdd)){
-		alert("Un Favoris ne peut pas être vide");
-	}
-	else if(document.getElementById("fav17").innerHTML!=""){
-		alert("Trop de favoris, veuillez en supprimer un.");
-	}
-	else {
-		alert("Unknown error");
-	}
+			}
+			else if(isEmpty(toAdd)){
+				alert("Un Favoris ne peut pas être vide");
+			}
+			else {
+				alert("Trop de favoris, veuillez en supprimer un.");
+			}
+		};
+		reader.readAsText(file);
+	}, fail);
 }
 
 
@@ -352,7 +349,6 @@ function deleteFav(id){
 			var splitresult = this.result.split("\\");
 			splitresult.splice(pos, 1);
 			var favStr = splitresult.join("\\");
-			alert("deleted");
 			favOb.createWriter(function(fileWriter) {       
 				var blob = new Blob([favStr], {type:'text/plain'});
 				fileWriter.write(blob);

@@ -345,15 +345,11 @@ function checkDb() {
 			var res=this.result;
 			if(res==""){
 				var db = window.openDatabase("Database", "1.0", "Picto Demo", 200000);
-				alert("populating db");
 				db.transaction(populateDB, errorCB);
 				startOb.createWriter(function(fileWriter) {       
 					var blob = new Blob(["Started"], {type:'text/plain'});
 					fileWriter.write(blob);
 				}, fail);
-			}
-			else{
-				alert("already started");
 			}
 
 		};
