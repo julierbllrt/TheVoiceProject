@@ -22,16 +22,12 @@
 					</div>
 
 					<div>
-						<button id="deletemode" onclick="godeletemode()">GO DELETE</button>
-					</div>
-
-					<div>
 						<button id="settings"> <img src="icon/settings.png"> </button>
 					</div>
 				</div>
 			
 				<form id="form_saisie" action="">
-					<button id="favButton" type="button" onclick="newFav()"><img id="favStar" src="icon/starFav.jpg"></button>
+					<button id="favButton" type="button" onclick="newFav()"><img id="favStar" src="icon/starFav.png"></button>
 					<input id="saisie" type="text" name="Saisie" value="" >
 					<input id="submit" type="button" value="OK" onclick="parler()">
 				</form>
@@ -39,11 +35,11 @@
 				<div id="divpicto">
 				
 					<div class="fleche" id ="gauche">
-						<button type="button" onclick="newFav()"> <img src="icon/left.png"> </button>
+						<button type="button" > <img src="icon/left.png"> </button>
 					</div>
 					
 					<div id ="corps">
-						<div class="texte" style="display:none">
+						<div class="texte" >
 							<p class="etape"><span>Etape 1:</span>Télechargez l'image qui vous convient. Elle doit être dans l'espace de stockage de votre tablette.</p>
 							<p class="etape"><span>Etape 2:</span>Cliquez sur "Choisissez votre fichier". Choisissez l'image pour le nouveau pictogramme.</p>
 							<p class="etape"><span>Etape 3:</span>Indiquez la catégorie ainsi que la signification du nouveau pictogramme </p>
@@ -71,8 +67,8 @@
 									<option value="Sport & Loisirs">Sports Et Loisirs</option>
 									<option value="Adverbes">Adverbes</option>
 								</select>
-							</p>
-							<p>Signification du pictogramme: <input id="signification"class="saisie" type="text" name="mot"/></p>
+							
+							Signification du pictogramme: <input id="signification"class="saisie" type="text" name="mot"/></p>
 							
 							<div id="form_verbe">
 							<p>
@@ -91,7 +87,7 @@
 									<option value="3">3ème groupe</option>
 								</select>
 								<br>
-								Irrégulier (présent/futur) : <input id="irr" type="checkbox" name="irr" value="1"/>
+								Irrégulier? (présent/futur) : <input id="irr" type="checkbox" name="irr" value="1" onchange="document.getElementById('form_irr').style.display='table'"/>
 								<br>
 								<div id="form_irr">
 									<table>
@@ -149,16 +145,29 @@
 						</form>
 						
 					</div>
+					
 					<form id="form_profil">
 						<table  id ="profil">
 						
 							<tr>
 								<td class="barre">
 									<p>Mode Administrateur 
-									<label class="switch">
-										<input type="checkbox">
-										<span class="slider round"></span>
-									</label></p>
+										<label class="switch">
+											<input id ="admin"type="checkbox">
+											<span class="slider round"></span>
+										</label>
+									</p>
+								</td>
+								
+							</tr>
+							<tr>
+								<td class="barre">
+									<p>Vitesse de la synthèse vocale:
+									
+										<input type="range" id="vitId" value="0.75" min="0" max="1" step="0.05" oninput="OutputId.value = vitId.value">
+										<output  id="OutputId">0.75</output>
+									
+									</p>
 								</td>
 								
 							</tr>
@@ -390,10 +399,11 @@
 
 			<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 			<script type="text/javascript" src="cordova.js"></script>
+			<script type="text/javascript" src="js/settings.js"></script>
 			<script type="text/javascript" src="js/Hide_Show.js"></script>
 			<script type="text/javascript" src="js/dbStart.js"></script>
 			
-			
+		
 			<script type="text/javascript" src="js/main.js"></script>
 			<script type="text/javascript" src="js/speech.js"></script>
 			<script type="text/javascript" src="js/upload.js"></script>
