@@ -35,7 +35,7 @@
 				<div id="divpicto">
 				
 					<div class="fleche" id ="gauche">
-						<button type="button" onclick="newFav()"> <img src="icon/left.png"> </button>
+						<button type="button" > <img src="icon/left.png"> </button>
 					</div>
 					
 					<div id ="corps">
@@ -145,16 +145,29 @@
 						</form>
 						
 					</div>
+					
 					<form id="form_profil">
 						<table  id ="profil">
 						
 							<tr>
 								<td class="barre">
 									<p>Mode Administrateur 
-									<label class="switch">
-										<input id ="admin"type="checkbox">
-										<span class="slider round"></span>
-									</label></p>
+										<label class="switch">
+											<input id ="admin"type="checkbox">
+											<span class="slider round"></span>
+										</label>
+									</p>
+								</td>
+								
+							</tr>
+							<tr>
+								<td class="barre">
+									<p>Vitesse de la synthèse vocale:
+									
+										<input type="range" id="vitId" value="0.75" min="0" max="1" step="0.05" oninput="OutputId.value = vitId.value">
+										<output  id="OutputId">0.75</output>
+									
+									</p>
 								</td>
 								
 							</tr>
@@ -386,10 +399,11 @@
 
 			<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 			<script type="text/javascript" src="cordova.js"></script>
+			<script type="text/javascript" src="js/settings.js"></script>
 			<script type="text/javascript" src="js/Hide_Show.js"></script>
 			<script type="text/javascript" src="js/dbStart.js"></script>
 			
-			
+		
 			<script type="text/javascript" src="js/main.js"></script>
 			<script type="text/javascript" src="js/speech.js"></script>
 			<script type="text/javascript" src="js/upload.js"></script>

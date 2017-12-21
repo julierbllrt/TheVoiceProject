@@ -129,13 +129,11 @@ $(document).ready(function(){
 	});
 
 	$('#admin').change(function() {
-		alert("changing");
+		
 		if ($(this).is(':checked')){
-			alert("godelete");
 			godeletemode();
 		}
 		else {
-			alert("stopdelete");
 			stopdeletemode();
 		}
 	});
@@ -144,7 +142,7 @@ $(document).ready(function(){
 		$('#form_profil').css("display","flex");
 		$('#page').css("position","static");
 
-		$('#tablefav').css("display", "none");
+		$('#tablefav'+i).css("display", "none");
  		$('#tableapropos').css("display", "none");
 		
 		$('#tablecate'+i).css("display", "none");

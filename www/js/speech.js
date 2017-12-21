@@ -1,9 +1,9 @@
-function blabla(txt){
+function blabla(txt,vit){
 		TTS
 			.speak({
 			     text:txt,
 			     locale:'fr-FR',
-			     rate: 1
+			     rate: vit
 			}, function () {
 			     console.log('success');
 			}, function (reason) {
@@ -14,7 +14,8 @@ function blabla(txt){
 
 function parler() {
 	var word=document.getElementById("saisie");
-       blabla(word.value)
+	var  vit = document.getElementById("vitId");
+       blabla(word.value,vit.value)
 	word.value="";
 }
 /*
