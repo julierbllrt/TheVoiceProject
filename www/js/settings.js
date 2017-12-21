@@ -21,7 +21,6 @@ function fail(e) {
 }
    
 function onDeviceReady() {
-	alert("going onDeviceReady settings");
 	window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dir) {
 		console.log(dir.nativeURL);
 		console.log("got main dir", dir);
@@ -58,7 +57,6 @@ function readLog() {
 			nom.value=res[0];
 			prenom.value=res[1];
 			var date=res[2].split("-");
-			alert(date);
 			birthday.value = date[0]+ "-"+date[1]+ "-"+date[2];
 			tel.value=res[3];
 			des.value=res[4];

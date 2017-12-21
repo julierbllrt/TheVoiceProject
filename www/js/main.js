@@ -208,17 +208,26 @@ function setApropos(){
 	}
 
 	if(birthday.value!=""){
-		alert("going");
-		console.log(birthday.value);
-		alert("check console");
 		txtPicto += "<p>J'ai " + CalculAge(birthday.value) + " ans</p>";
 		document.getElementById("apropos1").innerHTML = txtPicto;
 		txtPicto = "";
 	}
 
-	if (tel.value!=""){
+	if(tel.value!=""){
 		txtPicto += "<p>Mon numéro de téléphone est le " + tel.value + "</p>";
 		document.getElementById("apropos2").innerHTML = txtPicto;
+		txtPicto = "";
+	}
+
+	if(prenom.value!=""){
+		txtPicto += "<p>Bonjour, je m'appelle " + prenom.value + ". Et toi ?";
+		document.getElementById("apropos3").innerHTML = txtPicto;
+		txtPicto = "";
+	}
+
+	if(des.value!=""){
+		txtPicto += "<p>"+des.value+"</p>";
+		document.getElementById("apropos4").innerHTML = txtPicto;
 		txtPicto = "";
 	}
 
@@ -266,7 +275,6 @@ function setFav(){
 				var favToSet = document.getElementById("fav"+i); 
 				txtPicto += '<p>'+res[i]+'</p><img class="cross" src="icon/delete.png">';
 				favToSet.innerHTML = txtPicto;
-				alert(favToSet.innerHTML);
 				txtPicto = "";
 			}
 		};
