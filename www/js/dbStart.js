@@ -108,6 +108,9 @@ function populateDB(tx) {
 						{picto: 'img/Personnes/quoi.png', mot: 'quoi', personne: null, genre: 0},
 						{picto: 'img/Personnes/ceci.png', mot: 'ceci', personne: 3, genre: 0},
 						{picto: 'img/Personnes/cela.png', mot: 'cela', personne: 3, genre: 0},
+						{picto: 'img/Personnes/la.png', mot: 'la', personne: 3, genre: 0},
+						{picto: 'img/Personnes/le.png', mot: 'le', personne: 3, genre: 0},
+						{picto: 'img/Personnes/les.png', mot: 'les', personne: 3, genre: 0},
 			
 						{picto: 'img/Quotidien/balai.png', mot: 'balai', personne: 3, genre: 0},
 						{picto: 'img/Quotidien/dentifrice.png', mot: 'dentifrice', personne: 6, genre: 0},
@@ -155,6 +158,14 @@ function populateDB(tx) {
 						{picto: 'img/Emotion/colère.png', mot: 'colère', personne: 3, genre: 0},
 						{picto: 'img/Emotion/rire.png', mot: 'rire', personne: 3, genre: 0},
 						{picto: 'img/Emotion/optimiste.png', mot: 'optimiste', personne: 3, genre: 0},
+
+						{picto: 'img/Interactions/au revoir.png', mot: 'au revoir', personne: 3, genre: 0},
+						{picto: 'img/Interactions/à demain.png', mot: 'à demain', personne: 3, genre: 0},
+						{picto: 'img/Interactions/bonjour.png', mot: 'bonjour', personne: 3, genre: 0},
+						{picto: 'img/Interactions/bonne nuit.png', mot: 'bonne nuit', personne: 3, genre: 0},
+						{picto: 'img/Interactions/deRien.png', mot: 'de rien', personne: 3, genre: 0},
+						{picto: 'img/Interactions/merci.png', mot: 'merci', personne: 3, genre: 0},
+						{picto: 'img/Interactions/bonjour.png', mot: "à tout à l'heure", personne: 3, genre: 0},
 
 						{picto: 'img/Santé/allergie.png', mot: 'allergie', personne: 3, genre: 1},
 						{picto: 'img/Santé/asthme.png', mot: 'asthme', personne: 3, genre: 0},
