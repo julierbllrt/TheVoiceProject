@@ -159,9 +159,6 @@ $(document).ready(function(){
 function displayDispo(){
 	$('#page').css("position","static");
 	$('#corps').css("display","flex");
-	document.getElementById("form_verbe").style.display="none";
-	document.getElementById("form_personnes").style.display="flex";
-	document.getElementById("form_obj").style.display="none";
 	
 	$('#tablepicto'+n).css("display", "none");
 	$('#droite button').css("display","none");
